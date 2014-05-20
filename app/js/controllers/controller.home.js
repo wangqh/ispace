@@ -35,3 +35,24 @@ ispaceControllers.controller('homeCtrl', ['$scope', 'Group', 'Notify', function(
         }
     ];
   }]);
+
+/* 发布消息表单 */
+ispaceControllers.controller('formPublishCtrl',['$scope', function($scope){
+    $scope.isShowBtn = false;
+    $scope.inptRows = 1;
+    $scope.showBtn = function(){
+        $scope.isShowBtn = true;
+        $scope.inptRows = 3;
+    };
+    $scope.inputMsg = '';
+    $scope.submit = function(){
+        if($scope.inputMsg){
+            //console.log('hi')
+        }
+    }
+}]);
+
+/* 消息列表模块 */
+ispaceControllers.controller('msgListCtrl',['$scope', function($scope){
+    $scope.msgType = 'all';
+}]);

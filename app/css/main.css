@@ -408,22 +408,33 @@ body {
   margin-right: 6px;
 }
 .form-msg .list-inline{
-  margin: 16px 0 0;
+  margin: 20px 0 0;
 }
 .form-msg .form-group{
   margin-bottom: 10px;
 }
-.nav-filter > li > a{
+.form-msg .list-inline li .btn-primary{
+    margin: -4px 20px 0;
+}
+.btn-group-filter > .btn{
   padding: 2px 12px 3px;
   height: 25px;
   color: #4e4e4e;
   position: relative;
+  border-radius: 4px;
 }
-.nav-filter > li > a > .icon{
+.btn-group-filter > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle),.btn-group-filter > .btn:first-child:not(:last-child):not(.dropdown-toggle),.btn-group-filter > .btn:last-child:not(:first-child):not(.dropdown-toggle){
+    border-radius: 4px;
+}
+.btn-group-filter > .btn.active{
+    background-color: #2777b6;
+    color: #ffffff;
+}
+.btn-group-filter > .btn > .icon{
   vertical-align: top;
   margin-right: 4px;
 }
-.nav-filter > li > a > .caret{
+.btn-group-filter > .btn > .caret{
   display: none;
   border-top-color:#2777b6;
   border-width: 6px 8px 0; 
@@ -432,7 +443,7 @@ body {
   left: 50%;
   bottom: -6px;
 }
-.nav-filter > .active > a > .caret{
+.btn-group-filter > .active > .caret{
   display: block;
 }
 .msgs-container .btn-load-news{
