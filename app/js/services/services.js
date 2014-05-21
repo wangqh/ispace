@@ -20,6 +20,6 @@ ispaceServices.factory('Group', ['$resource', function($resource){
 //创建消息提示服务
 ispaceServices.factory('Notify', ['$resource', function($resource){
     return $resource('api/user/notify',{},{
-        count: {method: 'GET', params: {type: 'count'}, isArray: true}
+        count: {method: 'GET', params: {type: 'count'}, isArray: false}
     });
 }]);
