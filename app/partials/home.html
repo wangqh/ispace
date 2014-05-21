@@ -35,19 +35,22 @@
 
     <div class="panel">
         <div class="panel-body">
-            <form action="#" class="form-msg">
+            <form ng-submit="submit()" class="form-msg" ng-controller="formPublishCtrl">
                 <div class="form-group">
                     <div class="clearfix form-msg-label">
                         <small class="pull-right">发言请遵守 <a href="#">新东方规约</a></small>
-                        <label for="msg">
+                        <label for="inputMsg">
                             我和 新东方 不得不说的故事
                         </label>
                     </div>
                     <div class="textarea-wrap">
-                        <textarea name="msg" id="msg" rows="3" class="form-control"></textarea>
-                        <b class="caret"><b class="caret"></b></b>
+                        <textarea ng-model="inputMsg" ng-focus="showBtn()" name="inputMsg" required id="inputMsg" rows="{{inptRows}}" class="form-control"></textarea>
+                        <b class="caret" ng-show="isShowBtn"><b class="caret"></b></b>
                     </div>
                     <ul class="list-inline">
+                        <li class="pull-right" ng-show="isShowBtn">
+                            <button type="submit" id="submit" class="btn btn-sm btn-primary">发 布</button>
+                        </li>
                         <li><a href="#"><i class="icon icon-img-blue icon-sm"></i>图片</a></li>
                         <li><a href="#"><i class="icon icon-file-blue icon-sm"></i>文件</a></li>
                     </ul>
@@ -55,18 +58,38 @@
             </form>
         </div>
     </div>
-    <div class="msgs-container">
+    <div class="msgs-container" ng-controller="msgListCtrl">
         <div class="panel panel-filter">
             <div class="panel-body">
-                <ul class="nav nav-pills nav-filter">
-                    <li class="active"><a href="#">全部<b class="caret"></b></a></li>
-                    <li><a href="#"><i class="icon icon-sm icon-img"></i>图片<b class="caret"></b></a></li>
-                    <li><a href="#"><i class="icon icon-sm icon-file"></i>文件<b class="caret"></b></a></li>
-                    <li><a href="#"><i class="icon icon-sm icon-gps"></i>签到<b class="caret"></b></a></li>
-                    <li><a href="#"><i class="icon icon-sm icon-link"></i>链接<b class="caret"></b></a></li>
-                    <li><a href="#"><i class="icon icon-sm icon-audio"></i>语音<b class="caret"></b></a></li>
-                    <li><a href="#"><i class="icon icon-sm icon-video"></i>视频<b class="caret"></b></a></li>
-                </ul>
+                <div class="btn-group btn-group-filter" data-toggle="buttons">
+                    <label class="btn active">
+                        <input type="radio" name="msgType" ng-model="msgType" value="all"> 全部<b class="caret"></b>
+                    </label>
+                    <label class="btn">
+                        <input type="radio" name="msgType" ng-model="msgType" value="img">
+                        <i class="icon icon-sm icon-img"></i>图片<b class="caret"></b>
+                    </label>
+                    <label class="btn">
+                        <input type="radio" name="msgType" ng-model="msgType" value="file">
+                        <i class="icon icon-sm icon-file"></i>文件<b class="caret"></b>
+                    </label>
+                    <label class="btn">
+                        <input type="radio" name="msgType" ng-model="msgType" value="checkin">
+                        <i class="icon icon-sm icon-gps"></i>签到<b class="caret"></b>
+                    </label>
+                    <label class="btn">
+                        <input type="radio" name="msgType" ng-model="msgType" value="link">
+                        <i class="icon icon-sm icon-link"></i>链接<b class="caret"></b>
+                    </label>
+                    <label class="btn">
+                        <input type="radio" name="msgType" ng-model="msgType" value="audio">
+                        <i class="icon icon-sm icon-audio"></i>语音<b class="caret"></b>
+                    </label>
+                    <label class="btn">
+                        <input type="radio" name="msgType" ng-model="msgType" value="video">
+                        <i class="icon icon-sm icon-video"></i>视频<b class="caret"></b>
+                    </label>
+                </div>
             </div>
         </div>
         <a href="#" class="btn-load-news">
