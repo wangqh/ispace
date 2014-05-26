@@ -1,0 +1,94 @@
+<div class="panel-group">
+    <div ng-repeat="article in articles" class="panel">
+        <div class="panel-body">
+            <div class="media">
+                <div class="pull-left"><img ng-src="{{article.user.faceUrl}}" alt="" class="media-object img-circle face50"></div>
+                <div class="media-body">
+                    <div class="media-heading">
+                        <h3 class="media-title">{{article.user.name}} <small>{{article.user.org}}</small></h3>
+                    </div>
+                    <p><small class="text-muted">{{article.date}}</small></p>
+                </div>
+            </div>
+            <div ng-switch on="article.type" class="msg-content">
+                <div ng-switch-when="img">
+                    <p>{{article.content.txt}}</p>
+                    <div class="row">
+                        <div class="col-sm-4" ng-repeat="img in article.content.imgList">
+                            <img class="img-responsive" ng-src="{{img.url}}" alt=""/>
+                        </div>
+                    </div>
+                </div>
+                <div ng-switch-when="file">
+                    <p>{{article.content.txt}}</p>
+                    <div class="list-files">
+                        <div class="row" ng-repeat="file in article.content.fileList">
+                            <div class="col-sm-7" >
+                                <i class="icon icon-{{file.type}}"></i>
+                                {{file.name}}.{{file.type}}
+                            </div>
+                            <div class="col-sm-3">
+                                <a class="btn btn-link {{file.read.canRead?'':'disabled'}}" href="{{file.read.url}}">在线阅读 <small ng-if="file.read.canRead">({{file.read.count}}次)</small></a>
+                            </div>
+                            <div class="col-sm-2">
+                                <a class="btn btn-link" href="{{file.download.url}}">下载 <small>({{file.download.count || 0}}次)</small></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-switch-when="link">
+                    <p>{{article.content.txt}}</p>
+                    <div class="linkCont">
+                        <a class="btn btn-danger" href="{{article.content.link.url}}"> 点击访问 </a>
+                        {{article.content.link.name}}
+                    </div>
+                </div>
+                <div ng-switch-when="audio">
+                    <p>{{article.content.txt}}</p>
+                    <p>
+                        <button class="btn btn-primary btn-block" data-src="{{article.content.audio.url}}" type="button"> 点击播放语音  {{article.content.audio.duration}}</button>
+                    </p>
+                </div>
+                <div ng-switch-when="video">
+                    <p>{{article.content.txt}}</p>
+                    <my-video vid="{{article.content.vid}}" ></my-video>
+                </div>
+                <p ng-switch-default>{{article.content}}</p>
+            </div>
+            <div class="btn-toolbar msg-btn-toolbar">
+                <div class="btn-group">
+                    <button class="btn btn-link" ng-click="favArticle()" type="button">
+                        <i class="icon icon-sm icon-heart-empty-blue"></i> 收藏
+                    </button>
+                    <button class="btn btn-link" ng-click="shareArticle()" type="button">
+                        <i class="icon icon-sm icon-share-blue"></i> 分享
+                    </button>
+                </div>
+                <div class="btn-group pull-right">
+                    <button class="btn btn-link" ng-click="forwardArticle()" type="button">
+                        <i class="icon icon-sm icon-transmit-blue"></i> 转发
+                    </button>
+                    <button class="btn btn-link" ng-click="commentArticle()" type="button">
+                        <i class="icon icon-sm icon-comment-blue"></i> 评论
+                    </button>
+                    <button class="btn btn-link" ng-click="likeArticle()" type="button">
+                        <i class="icon icon-sm icon-thumb-up-blue"></i> {{article.like.meLiked ? '取消': ''}}赞
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="like-counts" ng-if="article.like">
+                    <i class="icon icon-sm icon-thumb-up-blue"></i>
+                    <a href="{{article.like.latest.link}}">{{article.like.latest.name}}</a> 和
+                    <a href="{{article.like.otherLink}}">其他 {{article.like.otherCount}} 人</a> 喜欢
+            </div>
+            <a href="{{article.comments.link}}" ng-if="article.comments.listCount > article.comments.list.length" class="showAllComments">
+                <i class="icon icon-sm icon-comment-blue"></i>
+                查看全部 {{article.comments.listCount}} 条评论
+            </a>
+          <my-comments list="article.comments.list" articleid="{{article.id}}" ondelete="deleteComment(id)" onadd="addComment(comment)">
+            </my-comments>
+        </div>
+    </div>
+</div>

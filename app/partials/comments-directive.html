@@ -1,0 +1,6 @@
+<div class="media-list">
+    <div ng-repeat="comment in list" >
+        <my-comment comment="comment" delete="deleteComment(comment.id)" reply="replyComment(comment)" ></my-comment>
+    </div>
+    <my-Commenting replyto="replyTo" add="addComment(comment)" ></my-Commenting>
+</div>
