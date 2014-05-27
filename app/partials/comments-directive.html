@@ -2,5 +2,5 @@
     <div ng-repeat="comment in list" >
         <my-comment comment="comment" delete="deleteComment(comment.id)" reply="replyComment(comment)" ></my-comment>
     </div>
-    <my-Commenting replyto="replyTo" add="addComment(comment)" ></my-Commenting>
+    <my-Commenting replyto="replyTo" onadd="addComment(commentTxt)" ></my-Commenting>
 </div>

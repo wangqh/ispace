@@ -62,10 +62,11 @@ ispaceControllers.controller('msgListCtrl',['$scope', 'Article', '$interval', fu
     $scope.getArticles();
 
     $scope.addComment = function(comment){
-        Article.save(comment);
+        Article.addComment(comment);
+        console.log(comment);
     };
 
     $scope.deleteComment = function(id){
-        Article.remove({id:id});
+        Article.removeComment({cid:id});
     };
 }]);
