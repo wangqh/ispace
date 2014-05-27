@@ -63,195 +63,41 @@
             <div class="panel-body">
                 <div class="btn-group btn-group-filter" data-toggle="buttons">
                     <label class="btn active">
-                        <input type="radio" name="msgType" ng-model="msgType" value="all"> 全部<b class="caret"></b>
+                        <input type="radio" name="articlesType" ng-change="getArticles()" ng-model="articlesType" value="all">全部<b class="caret"></b>
                     </label>
                     <label class="btn">
-                        <input type="radio" name="msgType" ng-model="msgType" value="img">
+                        <input type="radio" name="articlesType" ng-change="getArticles()" ng-model="articlesType" value="txt">
+                        <i class="icon icon-sm icon-gps"></i>文字<b class="caret"></b>
+                    </label>
+                    <label class="btn">
+                        <input type="radio" name="articlesType" ng-change="getArticles()" ng-model="articlesType" value="img">
                         <i class="icon icon-sm icon-img"></i>图片<b class="caret"></b>
                     </label>
                     <label class="btn">
-                        <input type="radio" name="msgType" ng-model="msgType" value="file">
+                        <input type="radio" name="articlesType" ng-change="getArticles()" ng-model="articlesType" value="file">
                         <i class="icon icon-sm icon-file"></i>文件<b class="caret"></b>
                     </label>
                     <label class="btn">
-                        <input type="radio" name="msgType" ng-model="msgType" value="checkin">
-                        <i class="icon icon-sm icon-gps"></i>签到<b class="caret"></b>
-                    </label>
-                    <label class="btn">
-                        <input type="radio" name="msgType" ng-model="msgType" value="link">
+                        <input type="radio" name="articlesType" ng-change="getArticles()" ng-model="articlesType" value="link">
                         <i class="icon icon-sm icon-link"></i>链接<b class="caret"></b>
                     </label>
                     <label class="btn">
-                        <input type="radio" name="msgType" ng-model="msgType" value="audio">
+                        <input type="radio" name="articlesType" ng-change="getArticles()" ng-model="articlesType" value="audio">
                         <i class="icon icon-sm icon-audio"></i>语音<b class="caret"></b>
                     </label>
                     <label class="btn">
-                        <input type="radio" name="msgType" ng-model="msgType" value="video">
+                        <input type="radio" name="articlesType" ng-change="getArticles()" ng-model="articlesType" value="video">
                         <i class="icon icon-sm icon-video"></i>视频<b class="caret"></b>
                     </label>
                 </div>
             </div>
         </div>
-        <a href="#" class="btn-load-news">
+        <a href="#" ng-click="getArticles()" ng-if="latest.count > 0" class="btn-load-news">
             <i class="icon icon-sm icon-loading-blue"></i>
-            点击查看最新9条更新
+            点击查看最新 {{latest.count}} 条更新
         </a>
-        <div class="panel-group">
-            <div class="panel">
-                <div class="panel-body">
-                    <div class="media">
-                        <div class="pull-left"><img src="images/temp/face.jpg" alt="" class="media-object img-circle face50"></div>
-                        <div class="media-body">
-                            <div class="media-heading">
-                                <h3 class="media-title">俞敏洪 <small>集团首席执行官</small></h3>
-                            </div>
-                            <p><small class="text-muted">1分钟前</small></p>
-                        </div>
-                    </div>
-                    <p class="msg-content">在亚布力会议上，演讲时我提到网上有人流传东莞定律，就是打压可能会让色情行业更加繁荣。同时有人也提出黄宗羲定律，古代改革常常得到相反的结果，我希望现在中国不要重复黄宗羲定律。有媒体误导说“俞敏洪说东莞色情在打压后可能会更加繁荣”。这话不是我说的，定律也不是我的发明，特此说明一下。</p>
-                    <div class="btn-toolbar msg-btn-toolbar">
-                        <div class="btn-group">
-                            <button class="btn btn-link" type="button">
-                                <i class="icon icon-sm icon-heart-empty-blue"></i> 收藏
-                            </button>
-                            <button class="btn btn-link" type="button">
-                                <i class="icon icon-sm icon-share-blue"></i> 分享
-                            </button>
-                        </div>
-                        <div class="btn-group pull-right">
-                            <button class="btn btn-link" type="button">
-                                <i class="icon icon-sm icon-transmit-blue"></i> 转发
-                            </button>
-                            <button class="btn btn-link" type="button">
-                                <i class="icon icon-sm icon-comment-blue"></i> 评论
-                            </button>
-                            <button class="btn btn-link" type="button">
-                                <i class="icon icon-sm icon-thumb-up-blue"></i> 赞
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-footer">
-                    <div class="like-counts">
-                        <i class="icon icon-sm icon-thumb-up-blue"></i>
-                        <a href="#">妙妙</a> 和
-                        <a href="#">其他 2345 人</a> 喜欢
-                    </div>
-                    <a href="#" class="showAllComments">
-                        <i class="icon icon-sm icon-comment-blue"></i>
-                        查看全部 2344 条评论
-                    </a>
-                    <div class="media-list">
-                        <div class="media">
-                            <a href="#" class="pull-left"><img src="images/temp/face.jpg" alt="" class="img-circle face30"></a>
-                            <div class="media-body">
-                                <div class="btn-group">
-                                    <a href="#" title="回复" data-toggle="tooltip" class="icon icon-sm icon-reply-blue"></a>
-                                    <a href="#" title="删除" data-toggle="tooltip" class="icon icon-sm icon-cross-blue"></a>
-                                </div>
-                                <p>
-                                    <a href="#" class="media-title">刘德华</a>
-                                    <small class="text-muted">有媒体误导说“俞敏洪说东莞色情在打压后可能会更加繁荣”。这话不是我说的，定律也不是我的发明，特此说明一下。</small>
-                                </p>
-                                <p><small class="text-muted">1分钟前</small></p>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <a href="#" class="pull-left"><img src="images/temp/face.jpg" alt="" class="img-circle face30"></a>
-                            <div class="media-body">
-                                <div class="btn-group">
-                                    <a href="#" title="回复" data-toggle="tooltip" class="icon icon-sm icon-reply-blue"></a>
-                                    <a href="#" title="删除" data-toggle="tooltip" class="icon icon-sm icon-cross-blue"></a>
-                                </div>
-                                <p>
-                                    <a href="#" class="media-title">刘德华</a>
-                                    <small class="text-muted">有媒体误导说“俞敏洪说东莞色情在打压后可能会更加繁荣”。这话不是我说的，定律也不是我的发明，特此说明一下。</small>
-                                </p>
-                                <p><small class="text-muted">1分钟前</small></p>
-                            </div>
-                        </div>
-                        <div class="media media-commenting">
-                            <a href="#" class="pull-left"><img src="images/temp/face.jpg" alt="" class="img-circle face30"></a>
-                            <div class="media-body">
-                                <div class="form-group isReply">
-                                    <label for="commenting">@刘德华</label>
-                                    <input type="text" id="commenting" value="" class="form-control" placeholder="说点什么">
-                                </div>
-                                <div class="text-right">
-                                    <button class="btn btn-sm btn-primary" type="button">发布</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+       <my-articles articles="articles" onadd="addComment(comment)" ondelete="deleteComment(id)"></my-articles>
 
-            <div class="panel">
-                <div class="panel-body">
-                    <div class="media">
-                        <div class="pull-left"><img src="images/temp/face.jpg" alt="" class="media-object img-circle face50"></div>
-                        <div class="media-body">
-                            <div class="media-heading">
-                                <h3 class="media-title">俞敏洪 <small>集团首席执行官</small></h3>
-                            </div>
-                            <p><small class="text-muted">1分钟前</small></p>
-                        </div>
-                    </div>
-                    <div class="msg-content">
-                        <p>亚布力会议上，演讲时我提到网上有人流传东莞定律</p>
-                        <p>
-                            <button class="btn btn-primary btn-block" type="button"> 点击播放语音  1"22'</button>
-                        </p>
-                    </div>
-                    <div class="btn-toolbar msg-btn-toolbar">
-                        <div class="btn-group">
-                            <button class="btn btn-link" type="button">
-                                <i class="icon icon-sm icon-heart-empty-blue"></i> 收藏
-                            </button>
-                            <button class="btn btn-link" type="button">
-                                <i class="icon icon-sm icon-share-blue"></i> 分享
-                            </button>
-                        </div>
-                        <div class="btn-group pull-right">
-                            <button class="btn btn-link" type="button">
-                                <i class="icon icon-sm icon-transmit-blue"></i> 转发
-                            </button>
-                            <button class="btn btn-link" type="button">
-                                <i class="icon icon-sm icon-comment-blue"></i> 评论
-                            </button>
-                            <button class="btn btn-link" type="button">
-                                <i class="icon icon-sm icon-thumb-up-blue"></i> 赞
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-footer">
-                    <div class="like-counts">
-                        <i class="icon icon-sm icon-thumb-up-blue"></i>
-                        <a href="#">妙妙</a> 和
-                        <a href="#">其他 2345 人</a> 喜欢
-                    </div>
-                    <a href="#" class="showAllComments">
-                        <i class="icon icon-sm icon-comment-blue"></i>
-                        查看全部 2344 条评论
-                    </a>
-                    <div class="media-list">
-
-                        <div class="media media-commenting">
-                            <a href="#" class="pull-left"><img src="images/temp/face.jpg" alt="" class="img-circle face30"></a>
-                            <div class="media-body">
-                                <div class="form-group">
-                                    <input type="text" id="commenting" value="" class="form-control" placeholder="说点什么">
-                                </div>
-                                <div class="text-right">
-                                    <button class="btn btn-sm btn-primary" type="button">发布</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 </div>

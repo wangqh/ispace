@@ -4,16 +4,20 @@
 
 var ispaceControllers = angular.module('ispace.controllers', []);
 
-ispaceControllers.controller('headerCtrl', ['$rootScope', 'Notify', function($rootScope, Notify){
+ispaceControllers.controller('headerCtrl', ['$rootScope', 'Notify', function($scope, Notify){
     /* 消息对象 */
-    $rootScope.notify = {
+    $scope.notify = {
         count: 0
     };
-    $rootScope.notify.count = Notify.query() > 0 ? Notify.query() : '';//消息数
-    $rootScope.notify.count = $rootScope.notify.count['$resolved'] ? $rootScope.notify.count : 234 ;// mock
+    $scope.notify.count = Notify.count() > 0 ? Notify.count() : '';//消息数
 }]);
 
 ispaceControllers.controller('homeCtrl', ['$scope', 'Group', 'Notify', function( $scope, Group, Notify) {
+    /* 消息对象 */
+    $scope.notify = {
+        count: 0
+    };
+    $scope.notify.count = Notify.count() > 0 ? Notify.count() : '';//消息数
 
     /* 我的圈子 */
     $scope.myGroup = {
@@ -22,22 +26,10 @@ ispaceControllers.controller('homeCtrl', ['$scope', 'Group', 'Notify', function(
         list: []
     };
     $scope.myGroup.list = Group.query();
-    $scope.myGroup.list = $scope.myGroup.list['$resolved'] ? $scope.myGroup.list : [// mock
-        {
-            imgUrl: 'images/temp/face.jpg',
-            link: '##',
-            title: '集团知识管理群'
-        },
-        {
-            imgUrl: 'images/temp/face.jpg',
-            link: '##',
-            title: '集团国外考试教学教研与运营群'
-        }
-    ];
-  }]);
+}]);
 
 /* 发布消息表单 */
-ispaceControllers.controller('formPublishCtrl',['$scope', function($scope){
+ispaceControllers.controller('formPublishCtrl',['$scope', 'Article', function($scope, Article){
     $scope.isShowBtn = false;
     $scope.inptRows = 1;
     $scope.showBtn = function(){
@@ -47,12 +39,33 @@ ispaceControllers.controller('formPublishCtrl',['$scope', function($scope){
     $scope.inputMsg = '';
     $scope.submit = function(){
         if($scope.inputMsg){
-            //console.log('hi')
+            Article.save({article: $scope.inputMsg});
         }
-    }
+    };
 }]);
 
 /* 消息列表模块 */
-ispaceControllers.controller('msgListCtrl',['$scope', function($scope){
-    $scope.msgType = 'all';
+ispaceControllers.controller('msgListCtrl',['$scope', 'Article', '$interval', function($scope, Article, $interval) {
+    $scope.articlesType = 'all';
+
+    $scope.latestCount = 0;
+
+    $scope.getLatest = function(){
+        $scope.latestCount = Article.ourLatest();
+    };
+    $interval($scope.getLatest(), 10000);
+
+    $scope.getArticles = function(){
+        $scope.articles = Article.ourList({type: $scope.articlesType},function(){
+        });
+    };
+    $scope.getArticles();
+
+    $scope.addComment = function(comment){
+        Article.save(comment);
+    };
+
+    $scope.deleteComment = function(id){
+        Article.remove({id:id});
+    };
 }]);

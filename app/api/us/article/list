@@ -1,0 +1,262 @@
+[{
+    "id": "324325325",
+    "user": {
+        "name": "杨义锋",
+        "faceUrl": "images/temp/face.jpg",
+        "org": "集团知识管理中心经理"
+    },
+    "date": "2014.5.24 20:51",
+    "type": "txt",
+    "content": "在亚布力会议上，演讲时我提到网上有人流传东莞定律，就是打压可能会让色情行业更加繁荣。同时有人也提出黄宗羲定律，古代改革常常得到相反的结果，我希望现在中国不要重复黄宗羲定律。有媒体误导说“俞敏洪说东莞色情在打压后可能会更加繁荣”。这话不是我说的，定律也不是我的发明，特此说明一下。",
+    "like": {
+        "meLiked": false,
+        "latest": {
+            "name": "妙妙",
+            "link": "##"
+        },
+        "otherCount": 2345,
+        "otherLink": "#other"
+    },
+    "comments": {
+        "link": "#moreComm",
+        "listCount": 2366,
+        "list": [
+            {
+                "user": {
+                    "name": "刘德华",
+                    "link": "#ldh",
+                    "faceUrl": "images/temp/face.jpg"
+                },
+                "content": "有媒体误导说“俞敏洪说东莞色情在打压后可能会更加繁荣”。这话不是我说的，定律也不是我的发明，特此说明一下。",
+                "date": "20分钟前"
+            },
+            {
+                "user": {
+                    "name": "黑泽明",
+                    "link": "#hzm",
+                    "faceUrl": "images/temp/face.jpg"
+                },
+                "content": "有媒体误导说“俞敏洪说东莞色情在打压后可能会更加繁荣”。这话不是我说的，定律也不是我的发明，特此说明一下。",
+                "date": "40分钟前"
+            }
+        ]
+    }
+},
+{
+    "id": "1115325",
+    "user": {
+        "name": "杨义锋",
+        "faceUrl": "images/temp/face.jpg",
+        "org": "集团知识管理中心经理"
+    },
+    "date": "2014.5.23 20:51",
+    "type": "audio",
+    "content": {
+        "txt": "在亚布力会议上，演讲时我提到网上有人流传东莞定律",
+        "audio": {
+            "url": "images/temp/test.mp3",
+            "duration": "1\"22'"
+        }
+    },
+    "like": {
+        "meLiked": true,
+        "latest": {
+            "name": "我",
+            "link": "##"
+        },
+        "otherCount": 2345,
+        "otherLink": "#other"
+    },
+    "comments": {
+            "link": "#moreComm",
+            "listCount": 2366,
+            "list": [
+                {
+                    "user": {
+                        "name": "刘德华",
+                        "link": "#ldh",
+                        "faceUrl": "images/temp/face.jpg"
+                    },
+                    "content": "有媒体误导说“俞敏洪说东莞色情在打压后可能会更加繁荣”。这话不是我说的，定律也不是我的发明，特此说明一下。",
+                    "date": "20分钟前"
+                },
+                {
+                    "user": {
+                        "name": "黑泽明",
+                        "link": "#hzm",
+                        "faceUrl": "images/temp/face.jpg"
+                    },
+                    "content": "有媒体误导说“俞敏洪说东莞色情在打压后可能会更加繁荣”。这话不是我说的，定律也不是我的发明，特此说明一下。",
+                    "date": "40分钟前"
+                }
+            ]
+    }
+},
+{
+    "id": "0937429",
+    "user": {
+        "name": "杨义锋",
+        "faceUrl": "images/temp/face.jpg",
+        "org": "集团知识管理中心经理"
+    },
+    "date": "2014.5.22 20:51",
+    "type": "img",
+    "content": {
+        "txt": "在亚布力会议上，演讲时我提到网上有人流传东莞定律",
+        "imgList": [
+            {
+                "url": "images/temp/pic.jpg"
+            },
+            {
+                "url": "images/temp/pic.jpg"
+            },
+            {
+                "url": "images/temp/pic.jpg"
+            },
+            {
+                "url": "images/temp/pic.jpg"
+            },
+            {
+                "url": "images/temp/pic.jpg"
+            },
+            {
+                "url": "images/temp/pic.jpg"
+            }
+        ]
+    },
+    "like": {
+        "meLiked": true,
+        "latest": {
+            "name": "我",
+            "link": "##"
+        },
+        "otherCount": 2345,
+        "otherLink": "#other"
+    },
+    "comments": {
+        "link": "#moreComm",
+        "listCount": 2366,
+        "list": [
+            {
+                "user": {
+                    "name": "刘德华",
+                    "link": "#ldh",
+                    "faceUrl": "images/temp/face.jpg"
+                },
+                "content": "有媒体误导说“俞敏洪说东莞色情在打压后可能会更加繁荣”。这话不是我说的，定律也不是我的发明，特此说明一下。",
+                "date": "20分钟前"
+            },
+            {
+                "user": {
+                    "name": "黑泽明",
+                    "link": "#hzm",
+                    "faceUrl": "images/temp/face.jpg"
+                },
+                "content": "有媒体误导说“俞敏洪说东莞色情在打压后可能会更加繁荣”。这话不是我说的，定律也不是我的发明，特此说明一下。",
+                "date": "40分钟前"
+            }
+        ]
+    }
+},
+{
+    "id": "3487w2",
+    "user": {
+        "name": "杨义锋",
+        "faceUrl": "images/temp/face.jpg",
+        "org": "集团知识管理中心经理"
+    },
+    "date": "2014.5.21 20:51",
+    "type": "file",
+    "content": {
+        "txt": "在亚布力会议上，演讲时我提到网上有人流传东莞定律",
+        "fileList": [
+            {
+                "type": "doc",
+                "name": "托福听力强化课程标准化教案第一课",
+                "read": {
+                    "link": "#read",
+                    "canRead": true,
+                    "count": 1223
+                },
+                "download": {
+                    "link": "#download",
+                    "count": 453
+                }
+            },
+            {
+                "type": "ppt",
+                "name": "托福听力强化课程标准化教案第一课",
+                "read": {
+                    "link": "#read",
+                    "canRead": false,
+                    "count": 0
+                },
+                "download": {
+                    "link": "#download",
+                    "count": 453
+                }
+            }
+        ]
+    },
+    "like": {
+        "meLiked": false,
+        "latest": {
+            "name": "妙妙",
+            "link": "##"
+        },
+        "otherCount": 2345,
+        "otherLink": "#other"
+    },
+    "comments": null
+},
+{
+    "id": "073921",
+    "user": {
+        "name": "杨义锋",
+        "faceUrl": "images/temp/face.jpg",
+        "org": "集团知识管理中心经理"
+    },
+    "date": "2014.5.19 20:51",
+    "type": "link",
+    "content": {
+        "txt": "在亚布力会议上，演讲时我提到网上有人流传东莞定律",
+        "link": {
+            "url": "#link",
+            "name": "你的行业、你身边有哪些事能印证现在经济萧条？"
+        }
+    },
+    "like": {
+        "meLiked": false,
+        "latest": {
+            "name": "妙妙",
+            "link": "##"
+        },
+        "otherCount": 2345,
+        "otherLink": "#other"
+    },
+    "comments": null
+},
+{
+    "id": "7774432222",
+    "user": {
+        "name": "杨义锋",
+        "faceUrl": "images/temp/face.jpg",
+        "org": "集团知识管理中心经理"
+    },
+    "date": "2014.5.19 20:51",
+    "type": "video",
+    "content": {
+        "txt": "在亚布力会议上，演讲时我提到网上有人流传东莞定律",
+        "vid": "39F6215C92A40D509C33DC5901307461"
+    },
+    "like": {
+        "meLiked": false,
+        "latest": {
+            "name": "妙妙",
+            "link": "##"
+        },
+        "otherCount": 2345,
+        "otherLink": "#other"
+    },
+    "comments": null
+}]

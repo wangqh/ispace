@@ -513,9 +513,9 @@ body {
   border: none;
 }
 .msgs-container .media-commenting .form-group.isReply .form-control{
-  padding-left: 65px;
+  text-indent: 65px;
 }
-.msgs-container .media-commenting .form-group.isReply label{
+.msgs-container .media-commenting .form-group label.replyTo{
   font-size: 12px;
   font-weight: normal;
   position: absolute;
