@@ -6,7 +6,7 @@
             <li><a href="#"><i class="icon icon-newspaper"></i>档案</a>
             </li>
             <li><a href="#">
-                <span class="badge pull-right">{{notify.count}}</span>
+                <span class="badge pull-right" ng-if="notify.count">{{notify.count}}</span>
                 <i class="icon icon-comment"></i>消息
             </a></li>
             <li><a href="#"><i class="icon icon-heart-empty"></i>收藏</a></li>
@@ -61,42 +61,42 @@
     <div class="msgs-container" ng-controller="msgListCtrl">
         <div class="panel panel-filter">
             <div class="panel-body">
-                <div class="btn-group btn-group-filter" data-toggle="buttons">
-                    <label class="btn active">
-                        <input type="radio" name="articlesType" ng-change="getArticles()" ng-model="articlesType" value="all">全部<b class="caret"></b>
+                <div class="btn-group btn-group-filter">
+                    <label class="btn{{articlesType==='all' ? ' active' : ''}}" ng-class="">
+                        <input type="radio" name="articlesType" ng-change="getArticles()"  ng-model="articlesType" value="all">全部<b class="caret"></b>
                     </label>
-                    <label class="btn">
+                    <label class="btn{{articlesType==='txt' ? ' active' : ''}}">
                         <input type="radio" name="articlesType" ng-change="getArticles()" ng-model="articlesType" value="txt">
                         <i class="icon icon-sm icon-gps"></i>文字<b class="caret"></b>
                     </label>
-                    <label class="btn">
+                    <label class="btn{{articlesType==='img' ? ' active' : ''}}">
                         <input type="radio" name="articlesType" ng-change="getArticles()" ng-model="articlesType" value="img">
                         <i class="icon icon-sm icon-img"></i>图片<b class="caret"></b>
                     </label>
-                    <label class="btn">
+                    <label class="btn{{articlesType==='file' ? ' active' : ''}}">
                         <input type="radio" name="articlesType" ng-change="getArticles()" ng-model="articlesType" value="file">
                         <i class="icon icon-sm icon-file"></i>文件<b class="caret"></b>
                     </label>
-                    <label class="btn">
-                        <input type="radio" name="articlesType" ng-change="getArticles()" ng-model="articlesType" value="link">
+                    <label class="btn{{articlesType==='link' ? ' active' : ''}}">
+                        <input type="radio" name="articlesType"  ng-change="getArticles()" ng-model="articlesType" value="link">
                         <i class="icon icon-sm icon-link"></i>链接<b class="caret"></b>
                     </label>
-                    <label class="btn">
+                    <label class="btn{{articlesType==='audio' ? ' active' : ''}}">
                         <input type="radio" name="articlesType" ng-change="getArticles()" ng-model="articlesType" value="audio">
                         <i class="icon icon-sm icon-audio"></i>语音<b class="caret"></b>
                     </label>
-                    <label class="btn">
+                    <label class="btn{{articlesType==='video' ? ' active' : ''}}">
                         <input type="radio" name="articlesType" ng-change="getArticles()" ng-model="articlesType" value="video">
                         <i class="icon icon-sm icon-video"></i>视频<b class="caret"></b>
                     </label>
                 </div>
             </div>
         </div>
-        <a href="#" ng-click="getArticles()" ng-if="latest.count > 0" class="btn-load-news">
+        <a href="#" ng-click="getArticles()" ng-if="latestCount > 0" class="btn-load-news">
             <i class="icon icon-sm icon-loading-blue"></i>
-            点击查看最新 {{latest.count}} 条更新
+            点击查看最新 {{latestCount}} 条更新
         </a>
-       <my-articles articles="articles" onadd="addComment(comment)" ondelete="deleteComment(id)"></my-articles>
+       <my-articles articles="articles" onadd="addComment(comment,success,error)" ondelete="deleteComment(id,success,error)"></my-articles>
 
     </div>
 </div>

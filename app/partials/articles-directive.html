@@ -87,7 +87,7 @@
                 <i class="icon icon-sm icon-comment-blue"></i>
                 查看全部 {{article.comments.listCount}} 条评论
             </a>
-          <my-comments list="article.comments.list" articleid="{{article.id}}" ondelete="deleteComment(id)" onadd="addComment(comment)">
+          <my-comments list="article.comments.list" articleid="{{article.id}}" ondelete="deleteComment(id,success,error)" onadd="addComment(comment,success,error)">
             </my-comments>
         </div>
     </div>

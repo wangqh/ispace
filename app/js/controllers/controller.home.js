@@ -4,20 +4,17 @@
 
 var ispaceControllers = angular.module('ispace.controllers', []);
 
-ispaceControllers.controller('headerCtrl', ['$rootScope', 'Notify', function($scope, Notify){
+ispaceControllers.controller('headerCtrl', ['$rootScope', 'NotifyInterval', function($rootScope, NotifyInterval){
     /* 消息对象 */
-    $scope.notify = {
+    $rootScope.notify = {
         count: 0
     };
-    $scope.notify.count = Notify.count() > 0 ? Notify.count() : '';//消息数
+    NotifyInterval.apply('notify', function(count){
+        $rootScope.notify.count = count; //消息数
+    });
 }]);
 
-ispaceControllers.controller('homeCtrl', ['$scope', 'Group', 'Notify', function( $scope, Group, Notify) {
-    /* 消息对象 */
-    $scope.notify = {
-        count: 0
-    };
-    $scope.notify.count = Notify.count() > 0 ? Notify.count() : '';//消息数
+ispaceControllers.controller('homeCtrl', ['$scope', 'Group', 'NotifyInterval', function( $scope, Group, NotifyInterval) {
 
     /* 我的圈子 */
     $scope.myGroup = {
@@ -45,25 +42,21 @@ ispaceControllers.controller('formPublishCtrl',['$scope', 'Article', function($s
 }]);
 
 /* 消息列表模块 */
-ispaceControllers.controller('msgListCtrl',['$scope', 'Article', '$interval', function($scope, Article, $interval) {
+ispaceControllers.controller('msgListCtrl',['$scope', '$templateCache', 'Article', 'NotifyInterval', function($scope, $templateCache, Article, NotifyInterval) {
+
     $scope.articlesType = 'all';
 
-    $scope.latestCount = 0;
-
-    $scope.getLatest = function(){
-        $scope.latestCount = Article.ourLatest();
-    };
-    $interval($scope.getLatest(), 10000);
+    NotifyInterval.apply('ourLatest', function(count){
+        $scope.latestCount  = count; //消息数
+    });
 
     $scope.getArticles = function(){
-        $scope.articles = Article.ourList({type: $scope.articlesType},function(){
-        });
+        $scope.articles = Article.ourList({type: $scope.articlesType});
     };
     $scope.getArticles();
 
-    $scope.addComment = function(comment){
-        Article.addComment(comment);
-        console.log(comment);
+    $scope.addComment = function(comment, success){
+        Article.addComment(comment, success);
     };
 
     $scope.deleteComment = function(id){

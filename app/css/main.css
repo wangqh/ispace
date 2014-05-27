@@ -446,6 +446,9 @@ body {
 .btn-group-filter > .active > .caret{
   display: block;
 }
+.btn-group-filter > .btn > input{
+    display: none;
+}
 .msgs-container .btn-load-news{
   display: block;
   text-align: center;
