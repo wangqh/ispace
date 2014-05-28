@@ -7,7 +7,7 @@
         </div>
         <p>
             <a href="#" class="media-title">{{comment.user.name}}</a>
-            <small class="text-muted">{{comment.content}}</small>
+            <small class="text-muted"><span ng-if="comment.replyTo" class="text-primary">回复: {{comment.replyTo}} </span>{{comment.content}}</small>
         </p>
         <p><small class="text-muted">{{comment.date}}</small></p>
     </div>

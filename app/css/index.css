@@ -1,14 +1,6 @@
+@import "global.css";
 @charset "UTF-8";
 
-/* Space out content a bit */
-body {
-  padding-top: 80px;
-  background-color: #f9f9f9;
-}
-.browsehappy{
-  /* background-color: #ffffff;
-  padding: 10px 30px; */
-}
 /* icons */
 .icon{
   display: inline-block;

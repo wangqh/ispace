@@ -14,7 +14,7 @@ ispaceControllers.controller('headerCtrl', ['$rootScope', 'NotifyInterval', func
     });
 }]);
 
-ispaceControllers.controller('homeCtrl', ['$scope', 'Group', 'NotifyInterval', function( $scope, Group, NotifyInterval) {
+ispaceControllers.controller('homeCtrl', ['$scope', 'Group', 'User', function( $scope, Group, User) {
 
     /* 我的圈子 */
     $scope.myGroup = {
@@ -23,10 +23,16 @@ ispaceControllers.controller('homeCtrl', ['$scope', 'Group', 'NotifyInterval', f
         list: []
     };
     $scope.myGroup.list = Group.query();
+
+    var myInfo  = User.myInfo(function(){
+        $scope.myInfo = myInfo;
+    });
+
 }]);
 
 /* 发布消息表单 */
-ispaceControllers.controller('formPublishCtrl',['$scope', 'Article', function($scope, Article){
+ispaceControllers.controller('formPublishCtrl',['$scope', '$element', function($scope, $element){
+    var article = {};
     $scope.isShowBtn = false;
     $scope.inptRows = 1;
     $scope.showBtn = function(){
@@ -36,13 +42,16 @@ ispaceControllers.controller('formPublishCtrl',['$scope', 'Article', function($s
     $scope.inputMsg = '';
     $scope.submit = function(){
         if($scope.inputMsg){
-            Article.save({article: $scope.inputMsg});
+            article.content = $scope.inputMsg;
+            article.type = 'txt';
+            $scope.addArticle(article);
+            $element[0].reset();
         }
     };
 }]);
 
 /* 消息列表模块 */
-ispaceControllers.controller('msgListCtrl',['$scope', '$templateCache', 'Article', 'NotifyInterval', function($scope, $templateCache, Article, NotifyInterval) {
+ispaceControllers.controller('articleListCtrl',['$scope',  'Article', 'NotifyInterval', function($scope,  Article, NotifyInterval) {
 
     $scope.articlesType = 'all';
 
@@ -54,6 +63,31 @@ ispaceControllers.controller('msgListCtrl',['$scope', '$templateCache', 'Article
         $scope.articles = Article.ourList({type: $scope.articlesType});
     };
     $scope.getArticles();
+
+    $scope.addArticle = function(article){
+        Article.save(article,function(){// ajax 成功
+            $scope.getArticles();
+        },function(data){// ajax 失败 测试用
+            if(data.status === 404){
+                $scope.articles.unshift({
+                    'id': '324325325',
+                    'user': {
+                        'name': $scope.myInfo.name,
+                        'faceUrl': $scope.myInfo.faceUrl,
+                        'org': $scope.myInfo.org
+                    },
+                    'date': '刚刚',
+                    'type': article.type,
+                    'content':article.content,
+                    'like': null,
+                    'comments': {
+                        'listCount': 0,
+                        'list': []
+                    }
+                });
+            }
+        });
+    };
 
     $scope.addComment = function(comment, success, error){
         Article.addComment(comment, success, error);

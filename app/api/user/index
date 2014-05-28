@@ -1,0 +1,45 @@
+{
+    "name": "李敏",
+    "faceUrl": "images/temp/face.jpg",
+    "org": "集团知识管理中心知识管理经理",
+    "followCount": 219,
+    "fansCount": 19,
+    "articleCount": 1231,
+    "myApps": [
+        {
+            "appId": "2353241",
+            "appName": "微盘",
+            "keyword": "cloud"
+        },
+        {
+            "appId": "003432432",
+            "appName": "邮箱",
+            "keyword": "mail"
+        },
+        {
+            "appId": "387554",
+            "appName": "OA",
+            "keyword": "oa"
+        },
+        {
+            "appId": "84376925",
+            "appName": "eHR",
+            "keyword": "ehr"
+        },
+        {
+            "appId": "7r287hf",
+            "appName": "CRM",
+            "keyword": "crm"
+        },
+        {
+            "appId": "wf0f3223",
+            "appName": "报销",
+            "keyword": "baox"
+        },
+        {
+            "appId": "wf0f3223",
+            "appName": "官网",
+            "keyword": "website"
+        }
+    ]
+}

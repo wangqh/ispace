@@ -21,11 +21,11 @@ ispaceDirectives.directive('myArticles',  function() {
         },
         templateUrl:'partials/articles-directive.html',
         controller:function ($scope, $attrs) {
-            $scope.addComment = function(comment,success){
-                $scope.onadd({comment:comment, success: success});
+            $scope.addComment = function(comment,success, error){
+                $scope.onadd({comment:comment, success:success, error:error});
             };
-            $scope.deleteComment = function(id, success){
-                $scope.ondelete({id:id, success:success});
+            $scope.deleteComment = function(id, success, error){
+                $scope.ondelete({id:id, success:success, error:error});
             };
         }
     };
@@ -50,40 +50,63 @@ ispaceDirectives.directive('myComments',  function() {
             };
             $scope.deleteComment = function(id){
                 $scope.ondelete({id:id,success:function(){// ajax 成功时
-                    delete $scope.list[id];
+                    for(var i in $scope.list){
+                        if($scope.list[i].id === id){
+                            $scope.list.splice(i,1);
+                        }
+                    }
                 },error: function(){// ajax 失败时 测试用
-                    delete $scope.list[id];
+                    for(var i in $scope.list){
+                        if($scope.list[i].id === id){
+                            $scope.list.splice(i,1);
+                        }
+                    }
                 }});
             };
             $scope.replyComment = function(commentOB){
                 var _commenting = $element.find('.media-commenting');
-                var pos = _commenting.position();
-                angular.element('html,body').animate({scrollTop: pos.top},'slow', 'swing', function(){
+                $scope.goToPosition(_commenting, function(){
                     _commenting.find('.form-control').focus();
                 });
 
                 $scope.replyTo = commentOB.user.name;
-                comment.replyId = commentOB.id;
+                comment.replyTo = commentOB.user.name;
             };
             $scope.addComment = function(commentTxt){
                 comment.txt = commentTxt;
                 $scope.onadd({comment:comment,success:function(data){// ajax 成功时
-                    $scope.list.unshift(data);
+                    $scope.goToPosition($element);
+                    $scope.pushList(data);
+                    comment.replyTo = false;
                 },error: function(data){// ajax 失败时 测试用
-                    console.log(data);
-                    var d = {
-                        'id': '5555523532531212',
-                        'user': {
-                            'name': '自己',
-                            'link': '#ldh',
-                            'faceUrl': 'images/temp/face.jpg'
-                        },
-                        'content': commentTxt,
-                        'date': '刚刚'
-                    };
-                    $scope.list.unshift(d);
+                    if(data.status === 404){
+                        var date = new Date();
+                        var d = {
+                            'id': date.getTime(),
+                            'replyTo': comment.replyTo,
+                            'user': {
+                                'name': '自己',
+                                'link': '#ldh',
+                                'faceUrl': 'images/temp/face.jpg'
+                            },
+                            'content': commentTxt,
+                            'date': '刚刚'
+                        };
+
+                        $scope.goToPosition($element);
+                        $scope.pushList(d);
+                        console.log(data);
+                    }
+                    comment.replyTo = false;
                 }});
-                comment.replyId = false;
+
+            };
+            $scope.pushList = function(item){
+                $scope.list.unshift(item);
+            };
+            $scope.goToPosition = function($tarEle, callback){
+                var pos = $tarEle.position();
+                angular.element('html,body').animate({scrollTop: pos.top},'slow', 'swing', callback);
             };
 
         },
