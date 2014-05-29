@@ -9,37 +9,44 @@
         {
             "appId": "2353241",
             "appName": "微盘",
-            "keyword": "cloud"
+            "keyword": "vDisk",
+            "url": "##vDisk"
         },
         {
             "appId": "003432432",
             "appName": "邮箱",
-            "keyword": "mail"
+            "keyword": "mail",
+            "url": "##mail"
         },
         {
             "appId": "387554",
             "appName": "OA",
-            "keyword": "oa"
+            "keyword": "oa",
+            "url": "##oa"
         },
         {
             "appId": "84376925",
             "appName": "eHR",
-            "keyword": "ehr"
+            "keyword": "ehr",
+            "url": "##ehr"
         },
         {
             "appId": "7r287hf",
             "appName": "CRM",
-            "keyword": "crm"
+            "keyword": "crm",
+            "url": "##crm"
         },
         {
             "appId": "wf0f3223",
             "appName": "报销",
-            "keyword": "baox"
+            "keyword": "baox",
+            "url": "##baox"
         },
         {
             "appId": "wf0f3223",
             "appName": "官网",
-            "keyword": "website"
+            "keyword": "website",
+            "url": "##website"
         }
     ]
 }

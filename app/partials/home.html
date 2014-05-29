@@ -109,69 +109,33 @@
         <div class="text-center">
             <div class="page-header">
                 <img src="images/temp/face.jpg" alt="" class="img-circle face160">
-                <h1>李敏</h1>
-                <p>集团知识管理中心知识管理经理</p>
+                <h1>{{myInfo.name}}</h1>
+                <p>{{myInfo.org}}</p>
             </div>
             <ul class="list-inline list-counts">
                 <li>
-                    <h4>219</h4>
+                    <h4>{{myInfo.followCount}}</h4>
                     <p>关注</p>
                 </li>
                 <li>
-                    <h4>19</h4>
+                    <h4>{{myInfo.fansCount}}</h4>
                     <p>粉丝</p>
                 </li>
                 <li>
-                    <h4>1231</h4>
+                    <h4>{{myInfo.articleCount}}</h4>
                     <p>动态</p>
                 </li>
             </ul>
         </div>
         <ul class="list-inline list-thumbs list-app">
-            <li>
-                <a href="#">
-                    <span class="icon circle-blue-bg"><i class="icon icon-cloud icon-white"></i></span>
-                    <h5>微盘</h5>
+            <li ng-repeat="app in myInfo.myApps">
+                <a href="{{app.url}}">
+                    <span class="icon circle-blue-bg"><i class="icon icon-{{app.iconClass}} icon-white"></i></span>
+                    <h5>{{app.appName}}</h5>
                 </a>
             </li>
             <li>
-                <a href="#">
-                    <span class="icon circle-blue-bg"><i class="icon icon-envelop icon-white"></i></span>
-                    <h5>邮箱</h5>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="icon circle-blue-bg"><i class="icon icon-inbox icon-white"></i></span>
-                    <h5>OA</h5>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="icon circle-blue-bg"><i class="icon icon-user icon-white"></i></span>
-                    <h5>eHR</h5>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="icon circle-blue-bg"><i class="icon icon-briefcase icon-white"></i></span>
-                    <h5>CRM</h5>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="icon circle-blue-bg"><i class="icon icon-card icon-white"></i></span>
-                    <h5>报销</h5>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="icon circle-blue-bg"><i class="icon icon-webpage icon-white"></i></span>
-                    <h5>官网</h5>
-                </a>
-            </li>
-            <li>
-                <a href="#">
+                <a href="#more">
                     <span class="icon circle-blue-bg"><i class="icon icon-list icon-white"></i></span>
                     <h5>更多</h5>
                 </a>
@@ -179,22 +143,22 @@
         </ul>
         <div class="checkin-container">
             <div class="progress">
-                <div class="progress-bar" style="width:60%;"></div>
+                <div class="progress-bar" style="width:{{(checkIn.vDisk.used/checkIn.vDisk.total)*100}}%;"></div>
             </div>
-            <p>签到赢积分，送空间10G</p>
+            <p>签到赢积分，送空间{{checkIn.vDisk.total}}G</p>
             <div class="well-checkin">
                 <div class="clearfix">
                     <div class="pull-left">
-                        <h6 class="time">2:20</h6>
-                        <p>周四</p>
+                        <h6 my-current-time="timeFormat" class="time"></h6>
+                        <p my-current-time="weekFormat"></p>
                     </div>
                     <div class="pull-right">
-                        <h6 class="count">5</h6>
+                        <h6 class="count">{{checkIn.checkIn.count}}</h6>
                         <p>共签到(天)</p>
                     </div>
                 </div>
                 <div class="checkin-btn">
-                    <button class="btn btn-primary btn-lg btn-block" type="button">签到</button>
+                    <button ng-disabled="checkIn.checkIn.isChecked" ng-click="doCheckIn()" class="btn btn-primary btn-lg btn-block" type="button">签到</button>
                 </div>
             </div>
         </div>

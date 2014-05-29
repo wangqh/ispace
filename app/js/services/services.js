@@ -35,13 +35,19 @@ ispaceServices.factory('NotifyInterval', ['$interval', 'Notify', 'Article', func
 
         apply: function(type, success){
             var self = this;
-            self.__types.push(type);
+
+            for(var i in self.__types){
+                if(self.__types[i].type == type){
+                    return ;
+                }
+            }
+            self.__types.push({type: type, success: success});
             if(self.__types.length && !self.__interval){
                 self.__interval = $interval(function(){
-                    self.__getCount(self.__types, success);
+                    self.__getCount(self.__types);
                 }, 60000);
             }
-            self.__getCount(self.__types, success);
+            self.__getCount(self.__types);
 
             return self;
         },
@@ -49,25 +55,25 @@ ispaceServices.factory('NotifyInterval', ['$interval', 'Notify', 'Article', func
         destroy: function(type){
             var self = this;
             for(var i in self.__types){
-                if(self.__types[i] === type){
+                if(self.__types[i].type === type){
                     self.__types.splice(i,1);
                 }
             }
         },
-        __getCount: function(types, success){
+        __getCount: function(types){
             var self = this;
 
             if(!types.length){
                 $interval.cancel(self.__interval);
             } else {
                 for(var i in types){
-                    switch (types[i])
+                    switch (types[i].type)
                     {
                         case 'notify':
-                            self.__getNotifyCount(success);
+                            self.__getNotifyCount(types[i].success);
                             break;
                         case 'ourLatest':
-                            self.__getArticleCount(success);
+                            self.__getArticleCount(types[i].success);
                             break;
                         default:
                     }

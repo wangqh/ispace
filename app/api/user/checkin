@@ -1,0 +1,10 @@
+{
+    "vDisk": {
+        "total": 10,
+        "used": 6.5
+    },
+    "checkIn": {
+        "count": 5,
+        "isChecked": false
+    }
+}
