@@ -1,10 +1,6 @@
 @import "global.css";
 @charset "UTF-8";
 
-
-
-
-
 /* homepage side left */
 .is-sidebar-left{
   margin: 0 -40px 0 -15px;
@@ -305,6 +301,49 @@
 }
 .msgs-container .msg-content{
   margin-top: 15px;
+}
+.msgs-container .msg-content  .row{
+    margin: 0 -10px;
+}
+.msgs-container .msg-content .col-sm-4{
+    padding: 0 10px;
+}
+.msgs-container .msg-content .type-img .col-sm-4{
+    margin-bottom: 15px;
+}
+.msg-content .type-file .list-files{
+    overflow: hidden;
+    padding-top: 10px;
+    border-top: solid #f6f6f6 1px;
+    border-bottom: solid #f6f6f6 1px;
+    margin-bottom: 12px;
+}
+.msg-content .type-file .list-files .row{
+    margin-bottom: 10px;
+}
+.msg-content .type-file .list-files .btn-link{
+    padding: 0;
+}
+.msg-content .type-file .list-files .col-sm-6,.msg-content .type-file .list-files .col-sm-3{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 文件类型图标 */
+[class*="icon-format-"]{
+    width: 24px;
+    height: 24px;
+    background: url("../images/icon-format.png") no-repeat 0 0;
+}
+.icon-format-doc{
+    background-position: 0 0;
+}
+
+.msg-content .type-link .linkCont{
+    background-color: #f8f8f8;
+    padding: 10px;
+    margin-bottom: 12px;
 }
 .msg-btn-toolbar{
 }

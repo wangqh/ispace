@@ -3,7 +3,8 @@
     "user": {
         "name": "杨义锋",
         "faceUrl": "images/temp/face.jpg",
-        "org": "集团知识管理中心经理"
+        "org": "集团知识管理中心经理",
+        "link": "##"
     },
     "date": "2014.5.24 20:51",
     "type": "txt",
@@ -51,7 +52,8 @@
     "user": {
         "name": "杨义锋",
         "faceUrl": "images/temp/face.jpg",
-        "org": "集团知识管理中心经理"
+        "org": "集团知识管理中心经理",
+        "link": "##"
     },
     "date": "2014.5.23 20:51",
     "type": "audio",
@@ -105,7 +107,8 @@
     "user": {
         "name": "杨义锋",
         "faceUrl": "images/temp/face.jpg",
-        "org": "集团知识管理中心经理"
+        "org": "集团知识管理中心经理",
+        "link": "##"
     },
     "date": "2014.5.22 20:51",
     "type": "img",
@@ -186,7 +189,8 @@
     "user": {
         "name": "杨义锋",
         "faceUrl": "images/temp/face.jpg",
-        "org": "集团知识管理中心经理"
+        "org": "集团知识管理中心经理",
+        "link": "##"
     },
     "date": "2014.5.21 20:51",
     "type": "file",
@@ -241,7 +245,8 @@
     "user": {
         "name": "杨义锋",
         "faceUrl": "images/temp/face.jpg",
-        "org": "集团知识管理中心经理"
+        "org": "集团知识管理中心经理",
+        "link": "##"
     },
     "date": "2014.5.19 20:51",
     "type": "link",
@@ -272,7 +277,8 @@
     "user": {
         "name": "杨义锋",
         "faceUrl": "images/temp/face.jpg",
-        "org": "集团知识管理中心经理"
+        "org": "集团知识管理中心经理",
+        "link": "##"
     },
     "date": "2014.5.19 20:51",
     "type": "video",

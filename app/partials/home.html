@@ -165,13 +165,13 @@
     </div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-default" ng-controller="recentVisitorsCtrl">
     <div class="panel-heading">
         <div class="pager pull-right">
-            <a href="#" class="disabled">
+            <a href="#" ng-click="navigator('prev')" class="disabled">
                 <span class="icon icon-sm icon-arrow-left-blue"></span>
             </a>
-            <a href="#" class="">
+            <a href="#" ng-click="navigator('next')" class="">
                 <span class="icon icon-sm icon-arrow-right-blue"></span>
             </a>
         </div>
@@ -179,9 +179,9 @@
     </div>
     <div class="panel-body">
         <ul class="list-inline list-thumbs list-face">
-            <li><a href="#">
-                <img class="face50 img-circle" src="images/temp/face.jpg" alt="">
-                <h5>王丽娜</h5>
+            <li ng-repeat="visitor in recentVisitors"><a href="#">
+                <img class="face50 img-circle" src="{{visitor.faceUrl}}" alt="">
+                <h5>{{ visitor.name }}</h5>
             </a></li>
             <li><a href="#">
                 <img class="face50 img-circle" src="images/temp/face.jpg" alt="">

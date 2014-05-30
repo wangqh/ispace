@@ -144,4 +144,46 @@ ispaceControllers.controller('articleListCtrl',['$scope',  'Article', 'NotifyInt
     };
 }]);
 
-ispaceControllers.controller('myInfo', ['$scope', function($scope){}]);
+ispaceControllers.controller('recentVisitorsCtrl', ['$scope', '$resource', function($scope, $resource) {
+    var recentVisitors = [];
+    var index = 0;
+    var span = 10;
+    var visitorCount = 98;
+
+    $scope.disabledPrev = true;
+    $scope.disabledNext = false;
+
+    $scope.navigator(direct){
+        var maxPage = Math.ceil(visitorCount/span);
+        var yush = visitorCount%span;
+        if(direct === 'prev'){
+
+            if(index > 0){
+                --index;
+                if(index === maxPage){
+                    $scope.recentVisitors = recentVisitors.slice((index*yush) - span, index*yush);
+                } else {
+                    $scope.recentVisitors = recentVisitors.slice(index*span -span, index*span);
+                }
+                if(index === 0){
+                    $scope.disabledPrev = true;
+                }
+            }
+        } else if(direct === 'next'){
+            if(index < maxPage){
+                $scope.recentVisitors = recentVisitors.slice(++index*span, (index+2)*span);
+                if(index === maxPage){
+                    $scope.disabledPrev = true;
+                }
+            }
+        }
+
+    }
+
+    function getVisitors(){
+        var Visitor = $resource('api/user/recentVisitors');
+        recentVisitors = Visitor.query();
+        visitorCount = recentVisitors.length;
+    }
+    getVisitors();
+}]);,
