@@ -2,7 +2,7 @@
     <div ng-repeat="article in articles" class="panel">
         <div class="panel-body">
             <div class="media">
-                <div class="pull-left"><img ng-src="{{article.user.faceUrl}}" alt="" class="media-object img-circle face50"></div>
+                <a href="{{article.user.link}}" class="pull-left"><img ng-src="{{article.user.faceUrl}}" alt="" class="media-object img-circle face50"></a>
                 <div class="media-body">
                     <div class="media-heading">
                         <h3 class="media-title">{{article.user.name}} <small>{{article.user.org}}</small></h3>
@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div ng-switch on="article.type" class="msg-content">
-                <div ng-switch-when="img">
+                <div ng-switch-when="img" class="type-img">
                     <p>{{article.content.txt}}</p>
                     <div class="row">
                         <div class="col-sm-4" ng-repeat="img in article.content.imgList">
@@ -19,37 +19,39 @@
                         </div>
                     </div>
                 </div>
-                <div ng-switch-when="file">
+                <div ng-switch-when="file"  class="type-file">
                     <p>{{article.content.txt}}</p>
                     <div class="list-files">
                         <div class="row" ng-repeat="file in article.content.fileList">
-                            <div class="col-sm-7" >
-                                <i class="icon icon-{{file.type}}"></i>
+                            <div class="col-sm-6" >
+                                <i class="icon icon-sm icon-format-{{file.type}}"></i>
                                 {{file.name}}.{{file.type}}
                             </div>
                             <div class="col-sm-3">
-                                <a class="btn btn-link {{file.read.canRead?'':'disabled'}}" href="{{file.read.url}}">在线阅读 <small ng-if="file.read.canRead">({{file.read.count}}次)</small></a>
+                                <a class="btn btn-link {{file.read.canRead?'':'disabled'}}" href="{{file.read.url}}">在线阅读 </a>
+                                <small ng-if="file.read.canRead">({{file.read.count}}次)</small>
                             </div>
-                            <div class="col-sm-2">
-                                <a class="btn btn-link" href="{{file.download.url}}">下载 <small>({{file.download.count || 0}}次)</small></a>
+                            <div class="col-sm-3">
+                                <a class="btn btn-link" href="{{file.download.url}}">下载 </a>
+                                <small>({{file.download.count || 0}}次)</small>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div ng-switch-when="link">
+                <div ng-switch-when="link"  class="type-link">
                     <p>{{article.content.txt}}</p>
                     <div class="linkCont">
-                        <a class="btn btn-danger" href="{{article.content.link.url}}"> 点击访问 </a>
+                        <a class="btn btn-danger btn-xs" href="{{article.content.link.url}}"> 点击访问 </a>
                         {{article.content.link.name}}
                     </div>
                 </div>
-                <div ng-switch-when="audio">
+                <div ng-switch-when="audio"  class="type-audio">
                     <p>{{article.content.txt}}</p>
                     <p>
                         <button class="btn btn-primary btn-block" data-src="{{article.content.audio.url}}" type="button"> 点击播放语音  {{article.content.audio.duration}}</button>
                     </p>
                 </div>
-                <div ng-switch-when="video">
+                <div ng-switch-when="video"  class="type-video">
                     <p>{{article.content.txt}}</p>
                     <my-video vid="{{article.content.vid}}" ></my-video>
                 </div>
