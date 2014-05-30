@@ -168,10 +168,10 @@
 <div class="panel panel-default" ng-controller="recentVisitorsCtrl">
     <div class="panel-heading">
         <div class="pager pull-right">
-            <a href="#" ng-click="navigator('prev')" class="disabled">
+            <a href="#" ng-click="navigator('prev')" class="{{disabledPrev ? 'disabled' : ''}}">
                 <span class="icon icon-sm icon-arrow-left-blue"></span>
             </a>
-            <a href="#" ng-click="navigator('next')" class="">
+            <a href="#" ng-click="navigator('next')" class="{{disabledNext ? 'disabled' : ''}}">
                 <span class="icon icon-sm icon-arrow-right-blue"></span>
             </a>
         </div>
@@ -179,187 +179,63 @@
     </div>
     <div class="panel-body">
         <ul class="list-inline list-thumbs list-face">
-            <li ng-repeat="visitor in recentVisitors"><a href="#">
-                <img class="face50 img-circle" src="{{visitor.faceUrl}}" alt="">
+            <li ng-repeat="visitor in recentVisitors"><a href="{{visitor.link}}">
+                <img class="face50 img-circle" ng-src="{{visitor.faceUrl}}" alt="">
                 <h5>{{ visitor.name }}</h5>
-            </a></li>
-            <li><a href="#">
-                <img class="face50 img-circle" src="images/temp/face.jpg" alt="">
-                <h5>王丽娜</h5>
-            </a></li>
-            <li><a href="#">
-                <img class="face50 img-circle" src="images/temp/face.jpg" alt="">
-                <h5>王丽娜</h5>
-            </a></li>
-            <li><a href="#">
-                <img class="face50 img-circle" src="images/temp/face.jpg" alt="">
-                <h5>王丽娜</h5>
-            </a></li>
-            <li><a href="#">
-                <img class="face50 img-circle" src="images/temp/face.jpg" alt="">
-                <h5>王丽娜</h5>
-            </a></li>
-            <li><a href="#">
-                <img class="face50 img-circle" src="images/temp/face.jpg" alt="">
-                <h5>王丽娜</h5>
-            </a></li>
-            <li><a href="#">
-                <img class="face50 img-circle" src="images/temp/face.jpg" alt="">
-                <h5>王丽娜</h5>
-            </a></li>
-            <li><a href="#">
-                <img class="face50 img-circle" src="images/temp/face.jpg" alt="">
-                <h5>王丽娜</h5>
-            </a></li>
-            <li><a href="#">
-                <img class="face50 img-circle" src="images/temp/face.jpg" alt="">
-                <h5>王丽娜</h5>
-            </a></li>
-            <li><a href="#">
-                <img class="face50 img-circle" src="images/temp/face.jpg" alt="">
-                <h5>王丽娜</h5>
             </a></li>
         </ul>
     </div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-default" ng-controller="mayKnowCtrl">
     <div class="panel-heading">
         <div class="pull-right"><i class="icon icon-sm icon-loading-blue"></i></div>
         <h2 class="panel-title">你可能认识</h2>
     </div>
     <div class="panel-body">
         <ul class="media-list is-media-list">
-            <li class="media">
-                <a href="#" class="pull-left"><img src="images/temp/face.jpg" alt="" class="media-object face50 img-circle"></a>
+            <li ng-repeat="item in mayKnowList" class="media">
+                <a href="{{item.link}}" class="pull-left"><img ng-src="{{item.faceUrl}}" alt="" class="media-object face50 img-circle"></a>
                 <div class="media-body">
                     <div class="media-heading">
-                        <a href="#" class="pull-right">+ 关 注</a>
-                        <h3 class="media-title">俞敏洪</h3>
+                        <a href="#" ng-click="doFollow(item.id)" class="pull-right">+ 关 注</a>
+                        <h3 class="media-title">{{item.name}}</h3>
                     </div>
-                    <p class="mr60">集团首席执行官集团首席执行官</p>
-                </div>
-            </li>
-            <li class="media">
-                <a href="#" class="pull-left"><img src="images/temp/face.jpg" alt="" class="media-object face50 img-circle"></a>
-                <div class="media-body">
-                    <div class="media-heading">
-                        <a href="#" class="pull-right">+ 关 注</a>
-                        <h3 class="media-title">俞敏洪</h3>
-                    </div>
-                    <p class="mr60">集团首席执行官集团首席执行官</p>
-                </div>
-            </li>
-            <li class="media">
-                <a href="#" class="pull-left"><img src="images/temp/face.jpg" alt="" class="media-object face50 img-circle"></a>
-                <div class="media-body">
-                    <div class="media-heading">
-                        <a href="#" class="pull-right">+ 关 注</a>
-                        <h3 class="media-title">俞敏洪</h3>
-                    </div>
-                    <p class="mr60">集团首席执行官集团首席执行官</p>
-                </div>
-            </li>
-            <li class="media">
-                <a href="#" class="pull-left"><img src="images/temp/face.jpg" alt="" class="media-object face50 img-circle"></a>
-                <div class="media-body">
-                    <div class="media-heading">
-                        <a href="#" class="pull-right">+ 关 注</a>
-                        <h3 class="media-title">俞敏洪</h3>
-                    </div>
-                    <p class="mr60">集团首席执行官集团首席执行官</p>
-                </div>
-            </li>
-            <li class="media">
-                <a href="#" class="pull-left"><img src="images/temp/face.jpg" alt="" class="media-object face50 img-circle"></a>
-                <div class="media-body">
-                    <div class="media-heading">
-                        <a href="#" class="pull-right">+ 关 注</a>
-                        <h3 class="media-title">俞敏洪</h3>
-                    </div>
-                    <p class="mr60">集团首席执行官集团首席执行官</p>
+                    <p class="mr60">{{item.org}}</p>
                 </div>
             </li>
         </ul>
     </div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-default" ng-controller="hotPersonCtrl">
     <div class="panel-heading">
         <div class="pull-right"><i class="icon icon-sm icon-loading-blue"></i></div>
         <h2 class="panel-title">Ta们最近很火</h2>
     </div>
     <div class="panel-body">
         <ul class="media-list is-media-list">
-            <li class="media">
-                <a href="#" class="pull-left"><img src="images/temp/face.jpg" alt="" class="media-object face50 img-circle"></a>
+            <li ng-repeat="item in hotPersonList" class="media">
+                <a href="{{item.link}}" class="pull-left"><img ng-src="{{item.faceUrl}}" alt="" class="media-object face50 img-circle"></a>
                 <div class="media-body">
-                    <p class="mt6"><strong class="media-title">俞敏洪</strong>就是传说中的小火锅吗，我饿了啊，真心不靠谱啊...</p>
-                </div>
-            </li>
-            <li class="media">
-                <a href="#" class="pull-left"><img src="images/temp/face.jpg" alt="" class="media-object face50 img-circle"></a>
-                <div class="media-body">
-                    <p class="mt6"><strong class="media-title">俞敏洪</strong>就是传说中的小火锅吗，我饿了啊，真心不靠谱啊...</p>
-                </div>
-            </li>
-            <li class="media">
-                <a href="#" class="pull-left"><img src="images/temp/face.jpg" alt="" class="media-object face50 img-circle"></a>
-                <div class="media-body">
-                    <p class="mt6"><strong class="media-title">俞敏洪</strong>就是传说中的小火锅吗，我饿了啊，真心不靠谱啊...</p>
-                </div>
-            </li>
-            <li class="media">
-                <a href="#" class="pull-left"><img src="images/temp/face.jpg" alt="" class="media-object face50 img-circle"></a>
-                <div class="media-body">
-                    <p class="mt6"><strong class="media-title">俞敏洪</strong>就是传说中的小火锅吗，我饿了啊，真心不靠谱啊...</p>
-                </div>
-            </li>
-            <li class="media">
-                <a href="#" class="pull-left"><img src="images/temp/face.jpg" alt="" class="media-object face50 img-circle"></a>
-                <div class="media-body">
-                    <p class="mt6"><strong class="media-title">俞敏洪</strong>就是传说中的小火锅吗，我饿了啊，真心不靠谱啊...</p>
+                    <p class="mt6"><strong class="media-title">{{item.name}}</strong>{{item.msg}}</p>
                 </div>
             </li>
         </ul>
     </div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-default" ng-controller="hotGroupCtrl">
     <div class="panel-heading">
         <div class="pull-right"><i class="icon icon-sm icon-loading-blue"></i></div>
         <h2 class="panel-title">Ta们在这里扎堆</h2>
     </div>
     <div class="panel-body">
         <ul class="media-list is-media-list">
-            <li class="media">
-                <a href="#" class="pull-left"><img src="images/temp/face.jpg" alt="" class="media-object face50 img-circle"></a>
+            <li ng-repeat="item in hotGroupList" class="media">
+                <a href="{{item.link}}" class="pull-left"><img ng-src="{{item.faceUrl}}" alt="" class="media-object face50 img-circle"></a>
                 <div class="media-body">
-                    <p class="mt6"><strong class="media-title">俞敏洪</strong>就是传说中的小火锅吗，我饿了啊，真心不靠谱啊...</p>
-                </div>
-            </li>
-            <li class="media">
-                <a href="#" class="pull-left"><img src="images/temp/face.jpg" alt="" class="media-object face50 img-circle"></a>
-                <div class="media-body">
-                    <p class="mt6"><strong class="media-title">俞敏洪</strong>就是传说中的小火锅吗，我饿了啊，真心不靠谱啊...</p>
-                </div>
-            </li>
-            <li class="media">
-                <a href="#" class="pull-left"><img src="images/temp/face.jpg" alt="" class="media-object face50 img-circle"></a>
-                <div class="media-body">
-                    <p class="mt6"><strong class="media-title">俞敏洪</strong>就是传说中的小火锅吗，我饿了啊，真心不靠谱啊...</p>
-                </div>
-            </li>
-            <li class="media">
-                <a href="#" class="pull-left"><img src="images/temp/face.jpg" alt="" class="media-object face50 img-circle"></a>
-                <div class="media-body">
-                    <p class="mt6"><strong class="media-title">俞敏洪</strong>就是传说中的小火锅吗，我饿了啊，真心不靠谱啊...</p>
-                </div>
-            </li>
-            <li class="media">
-                <a href="#" class="pull-left"><img src="images/temp/face.jpg" alt="" class="media-object face50 img-circle"></a>
-                <div class="media-body">
-                    <p class="mt6"><strong class="media-title">俞敏洪</strong>就是传说中的小火锅吗，我饿了啊，真心不靠谱啊...</p>
+                    <p class="mt6"><strong class="media-title">{{item.name}}</strong>{{item.msg}}</p>
                 </div>
             </li>
         </ul>
