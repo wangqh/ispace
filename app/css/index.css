@@ -318,7 +318,7 @@
     border-bottom: solid #f6f6f6 1px;
     margin-bottom: 12px;
 }
-.msg-content .type-file .list-files .row{
+.msg-content .type-file .list-files .row,.msg-content .type-video .videoCont{
     margin-bottom: 10px;
 }
 .msg-content .type-file .list-files .btn-link{

@@ -19,6 +19,7 @@ ispaceDirectives.directive('myArticles',  function() {
             onadd: '&',
             ondelete: '&'
         },
+        replace: true,
         templateUrl:'partials/articles-directive.html',
         controller:function ($scope, $attrs) {
             $scope.addComment = function(comment,success, error){
@@ -41,7 +42,6 @@ ispaceDirectives.directive('myComments',  function() {
             onadd: '&'
         },
         replace: true,
-
         templateUrl: 'partials/comments-directive.html',
         controller:function ($scope, $element, $attrs, $document) {
             $scope.replyTo = '';
@@ -173,8 +173,34 @@ ispaceDirectives.directive('myVideo',  function($sce) {
         replace: true,
         templateUrl: 'partials/video-directive.html',
         controller: function ($scope) {
-            $scope.videoUrl = $sce.trustAsResourceUrl('http://union.bokecc.com/player?vid='+ $scope.vid +'&siteid=B47D5D75B8086E19&autoStart=false&width=100%&height=100%&playerid=6804363A07E3D55F&playertype=1');
+            $scope.videoUrl = $sce.trustAsResourceUrl('http://union.bokecc.com/player?vid='+ $scope.vid +'&siteid=B47D5D75B8086E19&autoStart=false&width=100%&height=400&playerid=6804363A07E3D55F&playertype=1');
         }
+    };
+});
+
+ispaceDirectives.directive('myHeader',  function() {
+    return {
+        restrict: 'EA',
+        replace: true,
+        templateUrl: 'partials/header-directive.html',
+        controller: ['$rootScope', 'NotifyInterval', function($rootScope, NotifyInterval){
+            /* 消息对象 */
+            $rootScope.notify = {
+                count: 0
+            };
+            NotifyInterval.apply('notify', function(count){
+                $rootScope.notify.count = count; //消息数
+            });
+        }]
+    };
+});
+
+ispaceDirectives.directive('myFooter',  function() {
+    return {
+        restrict: 'EA',
+        replace: true,
+        templateUrl: 'partials/footer-directive.html',
+        controller: [ function(){ }]
     };
 });
 
