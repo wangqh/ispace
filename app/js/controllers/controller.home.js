@@ -149,41 +149,66 @@ ispaceControllers.controller('recentVisitorsCtrl', ['$scope', '$resource', funct
     var index = 0;
     var span = 10;
     var visitorCount = 98;
+    var Visitor = $resource('api/user/recentVisitors');
+    recentVisitors = Visitor.query(function(){
+        visitorCount = recentVisitors.length;
+        $scope.recentVisitors = recentVisitors.slice(0,span);
+    });
 
     $scope.disabledPrev = true;
     $scope.disabledNext = false;
 
-    $scope.navigator(direct){
-        var maxPage = Math.ceil(visitorCount/span);
+    $scope.navigator = function(direct){
+        var maxIndex = Math.ceil(visitorCount/span)-1;
         var yush = visitorCount%span;
         if(direct === 'prev'){
 
             if(index > 0){
-                --index;
-                if(index === maxPage){
-                    $scope.recentVisitors = recentVisitors.slice((index*yush) - span, index*yush);
-                } else {
-                    $scope.recentVisitors = recentVisitors.slice(index*span -span, index*span);
-                }
-                if(index === 0){
+                $scope.recentVisitors = recentVisitors.slice((index-1)*span, index*span);
+                if(index === 1){
                     $scope.disabledPrev = true;
                 }
+                $scope.disabledNext = false;
+                --index;
             }
         } else if(direct === 'next'){
-            if(index < maxPage){
-                $scope.recentVisitors = recentVisitors.slice(++index*span, (index+2)*span);
-                if(index === maxPage){
-                    $scope.disabledPrev = true;
+            if(index < maxIndex){
+
+                $scope.recentVisitors = recentVisitors.slice((index+1)*span, (index+2)*span);
+                if(index === maxIndex-1){
+                    $scope.disabledNext = true;
                 }
+                $scope.disabledPrev = false;
+                index++;
             }
         }
 
-    }
+    };
 
-    function getVisitors(){
-        var Visitor = $resource('api/user/recentVisitors');
-        recentVisitors = Visitor.query();
-        visitorCount = recentVisitors.length;
-    }
-    getVisitors();
-}]);,
+
+}]);
+
+ispaceControllers.controller('mayKnowCtrl', ['$scope', '$resource', function($scope, $resource) {
+    var MayKnow = $resource('api/user/mayKnow');
+    var mayKnowList = MayKnow.query(function(){
+        $scope.mayKnowList = mayKnowList;
+    });
+    $scope.doFollow = function(id){
+        var Follow = $resource('api/user/follow');
+        Follow.save({id:id});
+    };
+}]);
+
+ispaceControllers.controller('hotPersonCtrl', ['$scope', '$resource', function($scope, $resource) {
+    var HotPerson = $resource('api/public/hotPerson');
+    var hotPersonList = HotPerson.query(function(){
+        $scope.hotPersonList = hotPersonList;
+    });
+}]);
+
+ispaceControllers.controller('hotGroupCtrl', ['$scope', '$resource', function($scope, $resource) {
+    var HotGroup = $resource('api/public/hotGroup');
+    var hotGroupList = HotGroup.query(function(){
+        $scope.hotGroupList = hotGroupList;
+    });
+}]);
