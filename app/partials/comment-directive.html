@@ -2,11 +2,11 @@
     <a href="{{comment.user.link}}" class="pull-left"><img ng-src="{{comment.user.faceUrl}}" alt="" class="img-circle face30"></a>
     <div class="media-body">
         <div class="btn-group">
-            <a href="#" ng-click="reply()" title="回复" data-toggle="tooltip" class="icon icon-sm icon-reply-blue"></a>
-            <a href="#" ng-click="delete()" title="删除" data-toggle="tooltip" class="icon icon-sm icon-cross-blue"></a>
+            <a href="javascript:void(0)" ng-click="reply()" title="回复" data-toggle="tooltip" class="icon icon-sm icon-reply-blue"></a>
+            <a href="javascript:void(0)" ng-click="delete()" title="删除" data-toggle="tooltip" class="icon icon-sm icon-cross-blue"></a>
         </div>
         <p>
-            <a href="#" class="media-title">{{comment.user.name}}</a>
+            <a href="{{comment.user.link}}" class="media-title">{{comment.user.name}}</a>
             <small class="text-muted"><span ng-if="comment.replyTo" class="text-primary">回复: {{comment.replyTo}} </span>{{comment.content}}</small>
         </p>
         <p><small class="text-muted">{{comment.date}}</small></p>
