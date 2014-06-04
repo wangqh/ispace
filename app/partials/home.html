@@ -44,15 +44,20 @@
                         </label>
                     </div>
                     <div class="textarea-wrap">
-                        <textarea ng-model="inputMsg" ng-focus="showBtn()" name="inputMsg" required id="inputMsg" rows="{{inptRows}}" class="form-control"></textarea>
-                        <b class="caret" ng-show="isShowBtn"><b class="caret"></b></b>
+                        <textarea ng-model="inputMsg" name="inputMsg" required id="inputMsg" rows="3" class="form-control"></textarea>
+                        <b class="caret" ><b class="caret"></b></b>
                     </div>
                     <ul class="list-inline">
-                        <li class="pull-right" ng-show="isShowBtn">
+                        <li class="pull-right">
                             <button type="submit" id="submit" class="btn btn-sm btn-primary">发 布</button>
                         </li>
-                        <li><a href="#"><i class="icon icon-img-blue icon-sm"></i>图片</a></li>
-                        <li><a href="#"><i class="icon icon-file-blue icon-sm"></i>文件</a></li>
+                        <li class="pull-right">
+                            <a href="javascript:void(0)" ng-click="popover('mention')">@提及</a>
+                        </li>
+                        <li><a href="javascript:void(0)" class="img" ng-click="popover('img')"><i class="icon icon-img-blue icon-sm"></i>图片</a></li>
+                        <li><a href="javascript:void(0)" class="file" ng-click="popover('file')"><i class="icon icon-file-blue icon-sm"></i>文件</a></li>
+                        <li><a href="javascript:void(0)" class="link" ng-click="popover('link')"><i class="icon icon-link-blue icon-sm"></i>链接</a></li>
+                        <li><a href="javascript:void(0)" class="video" ng-click="popover('video')"><i class="icon icon-video-blue icon-sm"></i>视频</a></li>
                     </ul>
                 </div>
             </form>

@@ -109,6 +109,12 @@ textarea{
 .icon-img-blue{
     background-position: 0 -380px;
 }
+.icon-link-blue{
+    background-position: -30px -320px;
+}
+.icon-video-blue{
+    background-position: -30px -340px;
+}
 .icon-arrow-left-blue {
     background-position: -30px -240px;
 }

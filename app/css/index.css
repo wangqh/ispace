@@ -334,7 +334,8 @@
 [class*="icon-format-"]{
     width: 24px;
     height: 24px;
-    background: url("../images/icon-format.png") no-repeat 0 0;
+    background-image: url("../images/icon-fileType.png") ;
+    background-repeat: no-repeat;
 }
 .icon-format-pdf{
     background-position: 0 0;
