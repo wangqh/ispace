@@ -92,7 +92,7 @@
                 </div>
             </div>
         </div>
-        <a href="#" ng-click="getArticles()" ng-if="latestCount > 0" class="btn-load-news">
+        <a href="javascript:void(0)" ng-click="getArticles()" ng-if="latestCount > 0" class="btn-load-news">
             <i class="icon icon-sm icon-loading-blue"></i>
             点击查看最新 {{latestCount}} 条更新
         </a>
@@ -168,10 +168,10 @@
 <div class="panel panel-default" ng-controller="recentVisitorsCtrl">
     <div class="panel-heading">
         <div class="pager pull-right">
-            <a href="#" ng-click="navigator('prev')" class="{{disabledPrev ? 'disabled' : ''}}">
+            <a href="javascript:void(0)" ng-click="navigator('prev')" class="{{disabledPrev ? 'disabled' : ''}}">
                 <span class="icon icon-sm icon-arrow-left-blue"></span>
             </a>
-            <a href="#" ng-click="navigator('next')" class="{{disabledNext ? 'disabled' : ''}}">
+            <a href="javascript:void(0)" ng-click="navigator('next')" class="{{disabledNext ? 'disabled' : ''}}">
                 <span class="icon icon-sm icon-arrow-right-blue"></span>
             </a>
         </div>
@@ -198,7 +198,7 @@
                 <a href="{{item.link}}" class="pull-left"><img ng-src="{{item.faceUrl}}" alt="" class="media-object face50 img-circle"></a>
                 <div class="media-body">
                     <div class="media-heading">
-                        <a href="#" ng-click="doFollow(item.id)" class="pull-right">+ 关 注</a>
+                        <a href="javascript:void(0)" ng-click="doFollow(item.id)" class="pull-right">+ 关 注</a>
                         <h3 class="media-title">{{item.name}}</h3>
                     </div>
                     <p class="mr60">{{item.org}}</p>

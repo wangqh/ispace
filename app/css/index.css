@@ -318,7 +318,7 @@
     border-bottom: solid #f6f6f6 1px;
     margin-bottom: 12px;
 }
-.msg-content .type-file .list-files .row{
+.msg-content .type-file .list-files .row,.msg-content .type-video .videoCont{
     margin-bottom: 10px;
 }
 .msg-content .type-file .list-files .btn-link{
@@ -336,8 +336,29 @@
     height: 24px;
     background: url("../images/icon-format.png") no-repeat 0 0;
 }
-.icon-format-doc{
+.icon-format-pdf{
     background-position: 0 0;
+}
+.icon-format-txt{
+    background-position: 0 -30px;
+}
+.icon-format-doc{
+    background-position: 0 -60px;
+}
+.icon-format-ppt{
+    background-position: 0 -90px;
+}
+.icon-format-exl{
+    background-position: 0 -120px;
+}
+.icon-format-img{
+    background-position: 0 -150px;
+}
+.icon-format-video{
+    background-position: 0 -180px;
+}
+.icon-format-audio{
+    background-position: 0 -210px;
 }
 
 .msg-content .type-link .linkCont{
