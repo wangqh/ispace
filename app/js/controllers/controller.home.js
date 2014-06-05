@@ -87,22 +87,7 @@ ispaceControllers.controller('formPublishCtrl',['$scope', '$element', function($
     };
     $scope.inputMsg = '';
     $scope.popover = function(type){
-        var title = '',
-            content = '';
-        if(type === 'img'){
-            title = '发布图片';
-            content = '<ul class="list-inline">' +
-            '            <li><a href="javascript:void(0)" ng-click="addImg()">+</a></li>' +
-            '            </ul>';
-        } else if(type === 'video'){
-            title = '发布视频';
-        }
-        $element.find('.'+type).popover({
-            html: true,
-            placement: 'bottom',
-            title: title,
-            content: content
-        });
+
     };
     $scope.submit = function(){
         if($scope.inputMsg){

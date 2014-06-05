@@ -32,10 +32,10 @@
 </div>
 <div class="col-sm-7">
 <div class="is-home-content" ng-controller="articleListCtrl">
-
+    <form ng-submit="submit()" class="form-msg" ng-controller="formPublishCtrl">
     <div class="panel">
         <div class="panel-body">
-            <form ng-submit="submit()" class="form-msg" ng-controller="formPublishCtrl">
+
                 <div class="form-group">
                     <div class="clearfix form-msg-label">
                         <small class="pull-right">发言请遵守 <a href="#">新东方规约</a></small>
@@ -49,20 +49,50 @@
                     </div>
                     <ul class="list-inline">
                         <li class="pull-right">
+                            <input type="hidden" value="txt" ng-model="pubType"/>
                             <button type="submit" id="submit" class="btn btn-sm btn-primary">发 布</button>
                         </li>
                         <li class="pull-right">
-                            <a href="javascript:void(0)" ng-click="popover('mention')">@提及</a>
+                            <a href="javascript:void(0)" ng-click="pubType = 'mention'">@提及</a>
                         </li>
-                        <li><a href="javascript:void(0)" class="img" ng-click="popover('img')"><i class="icon icon-img-blue icon-sm"></i>图片</a></li>
-                        <li><a href="javascript:void(0)" class="file" ng-click="popover('file')"><i class="icon icon-file-blue icon-sm"></i>文件</a></li>
-                        <li><a href="javascript:void(0)" class="link" ng-click="popover('link')"><i class="icon icon-link-blue icon-sm"></i>链接</a></li>
-                        <li><a href="javascript:void(0)" class="video" ng-click="popover('video')"><i class="icon icon-video-blue icon-sm"></i>视频</a></li>
+                        <li><a href="javascript:void(0)" class="img" ng-click="pubType = 'txt'"><i class="icon icon-txt-blue icon-sm"></i>文字</a></li>
+                        <li><a href="javascript:void(0)" class="img" ng-click="pubType = 'img'"><i class="icon icon-img-blue icon-sm"></i>图片</a></li>
+                        <li><a href="javascript:void(0)" class="file" ng-click="pubType = 'file'"><i class="icon icon-file-blue icon-sm"></i>文件</a></li>
+                        <li><a href="javascript:void(0)" class="link" ng-click="pubType = 'link'"><i class="icon icon-link-blue icon-sm"></i>链接</a></li>
+                        <li><a href="javascript:void(0)" class="video" ng-click="pubType = 'video'"><i class="icon icon-video-blue icon-sm"></i>视频</a></li>
                     </ul>
                 </div>
-            </form>
+
+
         </div>
     </div>
+        <div ng-switch on="pubType">
+            <div ng-switch-when="img" class="mod-publish-attach">
+                <div class="hd">发布图片</div>
+                <div class="bd">
+                    <ul class="list-inline list-img">
+                        <li ng-repeat="item in listImg"><img src="{{item.imgUrl}}" alt=""/><i ng-click="removeImg(item.id)" class="icon-close"></i></li>
+                        <li><a class="add-img" href="javascript:void(0)">+</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div ng-switch-when="file" class="mod-publish-attach">
+                <div class="hd">发布文件</div>
+                <div class="bd">
+                    <button ng-click="uploadFile()" class="btn btn-link">点击上传文件</button>
+                    <ul class="list-files">
+                        <li ng-repeat="file in listFile">
+                            <a class="remove pull-right" href="javascript:void(0)">删除</a>
+                            <span>
+                                <i class="icon icon-sm icon-format-{{file.type}}"></i>
+                                {{file.name}}.{{file.type}}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </form>
     <div class="msgs-container" >
         <div class="panel panel-filter">
             <div class="panel-body">

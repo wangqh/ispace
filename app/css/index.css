@@ -206,6 +206,12 @@
   margin-left: 30px;
   margin-right: 12px;
 }
+.form-msg{
+    margin-bottom: 20px;
+}
+.form-msg .panel{
+    margin-bottom: 0;
+}
 .form-msg-label{
   font-size: 16px;
   font-style: italic;
@@ -311,29 +317,40 @@
 .msgs-container .msg-content .type-img .col-sm-4{
     margin-bottom: 15px;
 }
-.msg-content .type-file .list-files{
+.list-files{
     overflow: hidden;
     padding-top: 10px;
     border-top: solid #f6f6f6 1px;
     border-bottom: solid #f6f6f6 1px;
     margin-bottom: 12px;
+    line-height: 30px;
 }
-.msg-content .type-file .list-files .row,.msg-content .type-video .videoCont{
+.list-files .row,.msg-content .type-video .videoCont{
     margin-bottom: 10px;
 }
-.msg-content .type-file .list-files .btn-link{
+.list-files .btn-link{
     padding: 0;
 }
-.msg-content .type-file .list-files .col-sm-6,.msg-content .type-file .list-files .col-sm-3{
+.list-files .col-sm-6,.list-files .col-sm-3{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.mod-publish-attach{
+    background-color: #efefed;
+    padding: 0 20px;
+}
+.mod-publish-attach .hd{
+    font-size: 16px;
+    padding: 8px 0;
+    border-bottom: solid #f9f9f9 1px;
+    color: #9c9c9c;
+}
 
 /* 文件类型图标 */
 [class*="icon-format-"]{
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     background-image: url("../images/icon-fileType.png") ;
     background-repeat: no-repeat;
 }
