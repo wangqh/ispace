@@ -86,9 +86,48 @@ ispaceControllers.controller('formPublishCtrl',['$scope', '$element', function($
         $scope.inptRows = 3;
     };
     $scope.inputMsg = '';
-    $scope.popover = function(type){
-
-    };
+    $scope.listImg = [// 假数据，演示用
+        {
+            imgUrl: 'images/temp/pic.jpg',
+            id: '23213'
+        },
+        {
+            imgUrl: 'images/temp/pic.jpg',
+            id: '23213'
+        },
+        {
+            imgUrl: 'images/temp/pic.jpg',
+            id: '23213'
+        },
+        {
+            imgUrl: 'images/temp/pic.jpg',
+            id: '23213'
+        },
+        {
+            imgUrl: 'images/temp/pic.jpg',
+            id: '23213'
+        },
+        {
+            imgUrl: 'images/temp/pic.jpg',
+            progress: '23'
+        },
+        {
+            imgUrl: 'images/temp/pic.jpg',
+            progress: '46'
+        }
+    ];
+    $scope.listFile = [// 假数据，演示用
+        {
+            id: '23213',
+            name: '托福听力强化课程标准化教案第一课.doc',
+            type: 'doc'
+        },
+        {
+            id: '23213',
+            name: '托福听力强化课程标准化教案第一课.pptv',
+            type: 'ppt'
+        }
+    ];
     $scope.submit = function(){
         if($scope.inputMsg){
             article.content = $scope.inputMsg;

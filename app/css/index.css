@@ -239,7 +239,7 @@
 .list-inline>li>a>.icon-sm{
   margin-right: 6px;
 }
-.form-msg .list-inline{
+.form-msg .list-btn{
   margin: 20px 0 0;
 }
 .form-msg .form-group{
@@ -319,7 +319,7 @@
 }
 .list-files{
     overflow: hidden;
-    padding-top: 10px;
+    padding: 10px 0;
     border-top: solid #f6f6f6 1px;
     border-bottom: solid #f6f6f6 1px;
     margin-bottom: 12px;
@@ -346,6 +346,76 @@
     border-bottom: solid #f9f9f9 1px;
     color: #9c9c9c;
 }
+.mod-publish-attach .bd{
+    overflow: hidden;
+}
+.mod-publish-attach .bd .list-img{
+    margin: 10px -4px 20px;
+    font-size: 0;
+}
+.mod-publish-attach .bd .list-img li{
+    padding: 0 4px;
+    width: 12.5%;
+    vertical-align: top;
+}
+.mod-publish-attach .bd .list-img li .item{
+    min-height: 64px;
+    position: relative;
+}
+.mod-publish-attach .bd .list-img li .icon-remove{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    font-size: 28px;
+    line-height: 18px;
+    background-color: rgb(255,255,255);
+    background-color: rgba(255,255,255,.7);
+    color: #2777b6;
+    cursor: pointer;
+    text-align: center;
+}
+.mod-publish-attach .bd .list-img li .add-img{
+    height: 100%;
+    width: 100%;
+    display: block;
+    text-align: center;
+    line-height: 55px;
+    font-size: 42px;
+    color: #2777b6;
+    text-decoration: none;
+    border: dashed #2777b6 2px;
+    min-height: 64px;
+    background-color: #ffffff;
+}
+.mod-publish-attach .bd .list-img li .progress-mask,.mod-publish-attach .bd .list-img li .progress-count{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    left: 0;
+}
+.mod-publish-attach .bd .list-img li .progress-count{
+    color: #ffffff;
+    font-size: 12px;
+}
+.mod-publish-attach .bd .list-img li .progress-mask{
+    background-color: #2777b6;
+    opacity: .7;
+    filter:alpha(opacity=70);
+}
+.mod-publish-attach .btn-link{
+    padding: 6px 0;
+    vertical-align: baseline;
+}
+.mod-publish-attach .progress{
+    margin: 10px 0 0;
+}
+.mod-publish-attach .list-files{
+    margin-bottom: 20px;
+}
+
 
 /* 文件类型图标 */
 [class*="icon-format-"]{

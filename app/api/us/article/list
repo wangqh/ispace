@@ -199,7 +199,7 @@
         "fileList": [
             {
                 "type": "doc",
-                "name": "托福听力强化课程标准化教案第一课",
+                "name": "托福听力强化课程标准化教案第一课.doc",
                 "read": {
                     "link": "#read",
                     "canRead": true,
@@ -212,7 +212,7 @@
             },
             {
                 "type": "ppt",
-                "name": "托福听力强化课程标准化教案第一课",
+                "name": "托福听力强化课程标准化教案第一课.pptv",
                 "read": {
                     "link": "#read",
                     "canRead": false,

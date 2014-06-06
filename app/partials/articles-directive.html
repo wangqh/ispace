@@ -23,9 +23,9 @@
                     <p>{{article.content.txt}}</p>
                     <div class="list-files">
                         <div class="row" ng-repeat="file in article.content.fileList">
-                            <div class="col-sm-6" >
+                            <div class="col-sm-6" title="{{ file.name }}">
                                 <i class="icon icon-sm icon-format-{{file.type}}"></i>
-                                {{file.name}}.{{file.type}}
+                                {{file.name}}
                             </div>
                             <div class="col-sm-3">
                                 <a class="btn btn-link {{file.read.canRead?'':'disabled'}}" href="{{file.read.url}}">在线阅读 </a>

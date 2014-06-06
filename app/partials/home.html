@@ -47,7 +47,7 @@
                         <textarea ng-model="inputMsg" name="inputMsg" required id="inputMsg" rows="3" class="form-control"></textarea>
                         <b class="caret" ><b class="caret"></b></b>
                     </div>
-                    <ul class="list-inline">
+                    <ul class="list-inline list-btn">
                         <li class="pull-right">
                             <input type="hidden" value="txt" ng-model="pubType"/>
                             <button type="submit" id="submit" class="btn btn-sm btn-primary">发 布</button>
@@ -71,21 +71,36 @@
                 <div class="hd">发布图片</div>
                 <div class="bd">
                     <ul class="list-inline list-img">
-                        <li ng-repeat="item in listImg"><img src="{{item.imgUrl}}" alt=""/><i ng-click="removeImg(item.id)" class="icon-close"></i></li>
-                        <li><a class="add-img" href="javascript:void(0)">+</a></li>
+                        <li ng-repeat="item in listImg">
+                            <div class="item">
+                                <img src="{{item.imgUrl}}" class="img-responsive" alt=""/>
+                                <span ng-if="item.id" ng-click="removeImg(item.id)" class="icon-remove">&times;</span>
+                                <div ng-if="item.progress" class="progress-mask" style="height: {{item.progress}}%"></div>
+                                <div ng-if="item.progress" class="progress-count">{{item.progress}}%</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item">
+                                <a class="add-img" ng-click="uploadImg()" href="javascript:void(0)">+</a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
             <div ng-switch-when="file" class="mod-publish-attach">
                 <div class="hd">发布文件</div>
                 <div class="bd">
-                    <button ng-click="uploadFile()" class="btn btn-link">点击上传文件</button>
-                    <ul class="list-files">
+                    <button ng-click="uploadFile()" class="btn btn-link"  type="button">点击上传文件</button>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: {{uploadFile.progress}}%"></div>
+                    </div>
+                    <p>上传中，已经完成{{uploadFile.progress}}%  <buttton class="btn btn-link" type="button">取消上传</buttton></p>
+                    <ul class="list-files list-unstyled">
                         <li ng-repeat="file in listFile">
-                            <a class="remove pull-right" href="javascript:void(0)">删除</a>
+                            <a class="remove pull-right" ng-click="removeFile(file.id)" href="javascript:void(0)">删除</a>
                             <span>
                                 <i class="icon icon-sm icon-format-{{file.type}}"></i>
-                                {{file.name}}.{{file.type}}
+                                {{file.name}}
                             </span>
                         </li>
                     </ul>
