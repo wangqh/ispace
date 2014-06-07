@@ -77,8 +77,9 @@ ispaceControllers.controller('homeCtrl', ['$scope', 'Group', 'User', '$resource'
 }]);
 
 /* 发布消息表单 */
-ispaceControllers.controller('formPublishCtrl',['$scope', '$element', function($scope, $element){
+ispaceControllers.controller('formPublishCtrl',['$scope', '$element', '$resource',function($scope, $element, $resource){
     var article = {};
+
     $scope.isShowBtn = false;
     $scope.inptRows = 1;
     $scope.showBtn = function(){
@@ -116,6 +117,23 @@ ispaceControllers.controller('formPublishCtrl',['$scope', '$element', function($
             progress: '46'
         }
     ];
+    var File = $resource('api/file/:id');
+    var img;
+    $scope.uploadImg = function(){
+        //点添加图片按钮执行此方法
+        var data = {
+            url: '',
+            fileName: ''
+        };
+        img = File.save(data, function(){
+            $scope.listImg = img;
+        });
+    };
+    $scope.removeImg = function(id){
+        //点移除图片时执行此方法
+        img.$remove({id:id});
+    };
+
     $scope.listFile = [// 假数据，演示用
         {
             id: '23213',
@@ -128,17 +146,103 @@ ispaceControllers.controller('formPublishCtrl',['$scope', '$element', function($
             type: 'ppt'
         }
     ];
+    $scope.uploadFileData = {
+        progress: 40
+    };
+    var file;
+    $scope.uploadFile = function(){
+        //点上传文件按钮执行此方法
+        var data = {
+            url: '',
+            fileName: ''
+        };
+        file = File.save(data,function(){
+            $scope.listFile = file;
+        });
+    };
+    $scope.cancelUploadFile = function(){
+        //点取消上传文件按钮执行此方法
+    };
+    $scope.removeFile = function(id){
+        //点移除文件时执行此方法
+        file.$remove({id:id});
+    };
+
+    $scope.listVideo = [// 假数据，演示用
+        {
+            id: '23213',
+            name: '托福听力强化课程标准化教案第一课.mov'
+        },
+        {
+            id: '23213',
+            name: '托福听力强化课程标准化教案第一课.mp4'
+        }
+    ];
+    $scope.uploadVideoData = {
+        progress: 60
+    };
+    var video;
+    $scope.uploadVideo = function(){
+        //点上传文件按钮执行此方法
+        var data = {
+            url: '',
+            fileName: ''
+        };
+        video = File.save(data,function(){
+            $scope.listVideo = video;
+        });
+    };
+    $scope.cancelUploadVideo = function(){
+        //点取消上传文件按钮执行此方法
+    };
+    $scope.removeVideo = function(id){
+        //点移除文件时执行此方法
+        video.$remove({id:id});
+    };
+
+    var $mention = $element.find('.mention');
+    $mention.popover({
+        title: '@提及',
+        html: true,
+        placement: 'bottom',
+        template: '#mentionPopover'
+    });
+
+    //$element.find('.list-tags .tag').tooltip();
+
+    $scope.mentionPersons = [
+        {
+            id: '325325',
+            name: '杨义锋',
+            userName: 'yangyifeng2'
+        },
+        {
+            id: '325325',
+            name: '杨义锋',
+            userName: 'yangyifeng2'
+        }
+    ];
+    var Mention = $resource('api/user/mention/:id');
+    $scope.removePerson = function(id){
+        //点移除@提及的用户时执行此方法
+        Mention.remove({id:id});
+    };
+
+    $scope.pubType = 'txt';
+
     $scope.submit = function(){
         if($scope.inputMsg){
             article.content = $scope.inputMsg;
-            article.type = 'txt';
+            article.type = $scope.pubType;
+            $scope.pubType = 'txt';
             $scope.addArticle(article);
             $element[0].reset();
         }
     };
+
 }]);
 
-/* 消息列表模块 */
+/* 文章列表模块 */
 ispaceControllers.controller('articleListCtrl',['$scope',  'Article', 'NotifyInterval', function($scope,  Article, NotifyInterval) {
 
     $scope.articlesType = 'all';
@@ -182,7 +286,15 @@ ispaceControllers.controller('articleListCtrl',['$scope',  'Article', 'NotifyInt
     };
 
     $scope.deleteComment = function(id, success, error){
-        Article.removeComment({cid:id}, success, error);
+        Article.removeComment({id:id}, success, error);
+    };
+
+    $scope.favArticle = function(id, success, error){
+        Article.fav({id:id}, success, error);
+    };
+
+    $scope.likeArticle = function(id, success, error){
+        Article.like({id:id}, success, error);
     };
 }]);
 

@@ -292,7 +292,7 @@
 .msgs-container .panel-group .panel{
   border: none;
 }
-.msgs-container .panel-group .panel + .panel{
+.msgs-container .panel-group .panel-item + .panel-item{
   margin-top: 20px;
 }
 .msgs-container .panel-group .panel-body .media-title{
@@ -415,7 +415,79 @@
 .mod-publish-attach .list-files{
     margin-bottom: 20px;
 }
-
+.mod-publish-attach .linkBox{
+    margin: 10px 0 20px;
+}
+.mod-publish-attach .linkBox .form-control{
+    border: none;
+}
+.popover-mention, .is-home-content .popover{
+    width: 100%;
+}
+.popover-mention .tagsBox{
+    padding:0;
+    border-bottom: solid #f9f9f9 1px;
+    margin-bottom: 10px;
+}
+.popover-mention .searchBox{
+    position: relative;
+    margin-bottom: 12px;
+}
+.popover-mention .searchBox .glyphicon{
+    font-size: 16px;
+    color: #666666;
+    position: absolute;
+    right: 10px;
+    top:10px;
+}
+.popover-mention .searchBox .form-search{
+    padding-right: 30px;
+}
+.popover .form-control{
+    border: none;
+}
+.popover-mention .form-search.searching{
+    background:#ffffff url(../images/loading.gif) no-repeat right 50%;
+}
+.form-share .form-group{
+    margin-left: -5px;
+    margin-right: -5px;
+    margin-top: 10px;
+    position: relative;
+}
+.form-share .form-group [class^="col-sm-"]{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.form-share .media{
+    margin: 0 0 15px;
+    padding-top: 15px;
+    border-top: solid #f9f9f9 1px;
+}
+.form-share .form-actions{
+    text-align: right;
+    margin-bottom: 30px;
+}
+.form-share .control-label{
+    text-align: left;
+    color: #666666;
+}
+.mod-dialog {
+    width: 100%;
+    padding: 0 10px;
+    border: solid #2777b6 2px;
+    border-radius: 2px;
+    background-color: #ffffff;
+    position: absolute;
+    top: 100%;
+}
+.mod-dialog .bd{
+    padding: 5px 0 10px;
+}
+.mod-dialog .ft{
+    border-top: solid #dddddd 1px;
+    padding: 6px 0;
+}
 
 /* 文件类型图标 */
 [class*="icon-format-"]{
@@ -458,6 +530,11 @@
 }
 .msg-btn-toolbar .btn-group .btn{
   padding: 0 12px;
+}
+.msg-btn-toolbar .btn-group .btn.active{
+    background-color: #2777b6;
+    color: #ffffff;
+    text-decoration: none;
 }
 .like-counts{
   border-bottom: solid #ffffff 1px;

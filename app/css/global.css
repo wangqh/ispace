@@ -9,6 +9,15 @@ body {
 textarea{
     resize: vertical;
 }
+.list-tags li a{
+    display: block;
+    background-color: #2777b6;
+    color: #ffffff;
+    line-height: 20px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
 /* icons */
 .icon{
     display: inline-block;
@@ -182,6 +191,18 @@ textarea{
     position: absolute;
     left: 20px;
     top: 6px;
+}
+.is-navbar-collapse .dropdown-menu{
+    background-color: #373737;
+    border: none;
+}
+.is-navbar-collapse .dropdown-menu > li > a{
+    color: #9d9d9d;
+    font-size: 16px;
+    padding: 5px 20px;
+}
+.is-navbar-collapse .dropdown-menu > li > a:hover{
+    background-color: #131416;
 }
 /* Responsive: Portrait tablets and up */
 @media (min-width: 768px) {

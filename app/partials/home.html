@@ -53,7 +53,7 @@
                             <button type="submit" id="submit" class="btn btn-sm btn-primary">发 布</button>
                         </li>
                         <li class="pull-right">
-                            <a href="javascript:void(0)" ng-click="pubType = 'mention'">@提及</a>
+                            <a href="javascript:void(0)" class="mention">@提及</a>
                         </li>
                         <li><a href="javascript:void(0)" class="img" ng-click="pubType = 'txt'"><i class="icon icon-txt-blue icon-sm"></i>文字</a></li>
                         <li><a href="javascript:void(0)" class="img" ng-click="pubType = 'img'"><i class="icon icon-img-blue icon-sm"></i>图片</a></li>
@@ -61,6 +61,24 @@
                         <li><a href="javascript:void(0)" class="link" ng-click="pubType = 'link'"><i class="icon icon-link-blue icon-sm"></i>链接</a></li>
                         <li><a href="javascript:void(0)" class="video" ng-click="pubType = 'video'"><i class="icon icon-video-blue icon-sm"></i>视频</a></li>
                     </ul>
+                    <div id="mentionPopover" class="popover popover-mention">
+                        <div class="arrow"></div>
+                        <span class="close">&times;</span>
+                        <h3 class="popover-title"></h3>
+                        <div class="popover-content">
+                            <div class="tagsBox">
+                                <ul class="list-tags list-inline">
+                                    <li ng-repeat="p in mentionPersons">
+                                        <a ng-click="removePerson(p.id)" class="tag" title="删除" href="javascript:void(0)">{{p.name}}({{p.userName}})</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="searchBox">
+                                <span class="glyphicon glyphicon-search"></span>
+                                <input type="search" class="form-control form-search" ng-model="searchPerson" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -73,7 +91,7 @@
                     <ul class="list-inline list-img">
                         <li ng-repeat="item in listImg">
                             <div class="item">
-                                <img src="{{item.imgUrl}}" class="img-responsive" alt=""/>
+                                <img ng-src="{{item.imgUrl}}" class="img-responsive" alt=""/>
                                 <span ng-if="item.id" ng-click="removeImg(item.id)" class="icon-remove">&times;</span>
                                 <div ng-if="item.progress" class="progress-mask" style="height: {{item.progress}}%"></div>
                                 <div ng-if="item.progress" class="progress-count">{{item.progress}}%</div>
@@ -91,10 +109,14 @@
                 <div class="hd">发布文件</div>
                 <div class="bd">
                     <button ng-click="uploadFile()" class="btn btn-link"  type="button">点击上传文件</button>
-                    <div class="progress">
-                        <div class="progress-bar" style="width: {{uploadFile.progress}}%"></div>
+                    <div ng-if="uploadFileData">
+                        <div class="progress">
+                            <div class="progress-bar" style="width: {{uploadFileData.progress}}%"></div>
+                        </div>
+                        <p>上传中，已经完成{{uploadFileData.progress}}%
+                            <buttton ng-click="cancelUploadFile()" class="btn btn-link" type="button">取消上传</buttton>
+                        </p>
                     </div>
-                    <p>上传中，已经完成{{uploadFile.progress}}%  <buttton class="btn btn-link" type="button">取消上传</buttton></p>
                     <ul class="list-files list-unstyled">
                         <li ng-repeat="file in listFile">
                             <a class="remove pull-right" ng-click="removeFile(file.id)" href="javascript:void(0)">删除</a>
@@ -106,8 +128,42 @@
                     </ul>
                 </div>
             </div>
+            <div ng-switch-when="link" class="mod-publish-attach">
+                <div class="hd">发布链接</div>
+                <div class="bd">
+                    <div class="linkBox">
+                        <input type="text" class="form-control" ng-model="pubLink" />
+                    </div>
+                </div>
+            </div>
+            <div ng-switch-when="video" class="mod-publish-attach">
+                <div class="hd">发布视频</div>
+                <div class="bd">
+                    <button ng-click="uploadVideo()" class="btn btn-link"  type="button">点击上传视频</button>
+                    <div ng-if="uploadVideoData">
+                        <div class="progress">
+                            <div class="progress-bar" style="width: {{uploadVideoData.progress}}%"></div>
+                        </div>
+                        <p>上传中，已经完成{{uploadVideoData.progress}}%
+                            <buttton ng-click="cancelUploadVideo()" class="btn btn-link" type="button">取消上传</buttton>
+                        </p>
+                    </div>
+                    <ul class="list-files list-unstyled">
+                        <li ng-repeat="file in listVideo">
+                            <a class="remove pull-right" ng-click="removeVideo(file.id)" href="javascript:void(0)">删除</a>
+                            <span>
+                                <i class="icon icon-sm icon-format-video"></i>
+                                {{file.name}}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </form>
+
+    <my-forward-article close="closePopForward()" groups="myGroup.list" faceurl="{{myInfo.faceUrl}}" ></my-forward-article>
+
     <div class="msgs-container" >
         <div class="panel panel-filter">
             <div class="panel-body">
@@ -146,9 +202,10 @@
             <i class="icon icon-sm icon-loading-blue"></i>
             点击查看最新 {{latestCount}} 条更新
         </a>
-       <my-articles articles="articles" onadd="addComment(comment,success,error)" ondelete="deleteComment(id,success,error)"></my-articles>
+       <my-articles articles="articles" onfav="favArticle(id, success, error)" onlike="likeArticle(id, success, error)" onadd="addComment(comment,success,error)" ondelete="deleteComment(id,success,error)"></my-articles>
 
     </div>
+
 </div>
 </div>
 <div class="col-sm-3">

@@ -99,12 +99,14 @@ ispaceServices.factory('NotifyInterval', ['$interval', 'Notify', 'Article', func
 
 //创建微博文章REST服务
 ispaceServices.factory('Article', ['$resource', function($resource){
-    return $resource('api/:ob/article/:op/:cid', {ob: 'user'}, {
+    return $resource('api/:ob/article/:op/:id', {ob: 'user'}, {
         ourList: {method: 'GET', params: {ob:'us', op: 'list'}, isArray: true},//我们的动态(包含关注的人)
         ourLatest: {method: 'GET', params: {ob:'us', op:'latest'}},//我们的动态 最新数量
         myList: {method: 'GET', params: {ob:'user', op: 'list'}, isArray: true},//我的动态
         removeComment: {method: 'DELETE', params: { ob: null, op: 'comment'}},//删除对应id的评论
-        addComment: {method: 'POST', params: { ob: null, op: 'comment'}}//增加评论
+        addComment: {method: 'POST', params: { ob: null, op: 'comment'}},//增加评论
+        fav: {method: 'PUT', params: { ob: null, op: 'fav'}},//收藏
+        like: {method: 'PUT', params: { ob: null, op: 'like'}}//喜欢
     });
 }]);
 
@@ -112,7 +114,7 @@ ispaceServices.factory('Article', ['$resource', function($resource){
 ispaceServices.factory('User', ['$resource', function($resource){
     return $resource('api/:u/:op', {u: 'user'}, {
         myInfo: {method: 'GET', params: {op:'index'}},//我的个人信息
-        oneInfo: {method: 'GET', params: {u:'uid', op:'index'}}//某个的信息
+        oneInfo: {method: 'GET', params: {u:'uid', op:'index'}}//某个人的信息
     });
 }]);
 

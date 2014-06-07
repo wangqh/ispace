@@ -18,6 +18,7 @@
         "otherCount": 2345,
         "otherLink": "#other"
     },
+    "fav": true,
     "comments": {
         "link": "#moreComm",
         "listCount": 2366,
