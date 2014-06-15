@@ -1,0 +1,507 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="col-main">
+                <div class="panel panel-user">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="text-center">
+                                    <div class="page-header">
+                                        <img src="images/temp/face.jpg" alt="" class="img-circle face160">
+                                        <h1>{{profileInfo.name}}</h1>
+                                    </div>
+                                    <ul class="list-inline list-counts">
+                                        <li>
+                                            <h4>{{profileInfo.followCount}}</h4>
+                                            <p>关注</p>
+                                        </li>
+                                        <li>
+                                            <h4>{{profileInfo.fansCount}}</h4>
+                                            <p>粉丝</p>
+                                        </li>
+                                        <li>
+                                            <h4>{{profileInfo.articleCount}}</h4>
+                                            <p>动态</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <ul class="list-inline list-circle-lg">
+                                    <li>
+                                        <span class="circle-blue-bg circle-bg-lg"><i class="icon icon-cloud icon-white"></i></span>
+                                    </li>
+                                    <li>
+                                        <h4>24781</h4>
+                                    </li>
+                                    <li></li>
+                                    <li>
+                                        <span class="circle-blue-bg circle-bg-lg"><i class="icon icon-cloud icon-white"></i></span>
+                                    </li>
+                                    <li>
+                                        <h4>1139</h4>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline list-icons">
+                                    <li><a href="javascript:void (0);" class="circle-blue-bg"><i class="icon icon-sm icon-white icon-gps"></i></a></li>
+                                    <li><a href="javascript:void (0);" class="circle-blue-bg"><i class="icon icon-sm icon-white icon-gps"></i></a></li>
+                                    <li><a href="javascript:void (0);" class="circle-blue-bg"><i class="icon icon-sm icon-white icon-gps"></i></a></li>
+                                    <li><a href="javascript:void (0);" class="circle-blue-bg"><i class="icon icon-sm icon-white icon-gps"></i></a></li>
+                                    <li><a href="javascript:void (0);" class="circle-blue-bg"><i class="icon icon-sm icon-white icon-gps"></i></a></li>
+                                </ul>
+                                <div class="mod-intro">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <span class="text-muted">岗位：</span>
+                                            {{profileInfo.position}}
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <span class="text-muted">机构：</span>
+                                            {{profileInfo.org}}
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <span class="text-muted">部门：</span>
+                                            {{profileInfo.department}}
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <span class="text-muted">电话：</span>
+                                            {{contact.fields.tel}}
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <span class="text-muted">邮箱：</span>
+                                            {{contact.fields.mail}}
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <span class="text-muted">手机：</span>
+                                            {{contact.fields.phone}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-tags">
+                    <div class="panel-body">
+                        <div class="tagBox">
+                            <ul class="list-tags list-inline">
+                                <li ng-repeat="tag in tags">
+                                    <a ng-click="removeTag(tag.id)" class="tag" data-toggle="tooltip" title="删除" href="javascript:void(0)">{{tag.name}}</a>
+                                </li>
+                                <li ng-if="isMyProfile" ng-hide="tagEditing">
+                                    <a ng-click="addTag()" class="tag add" href="javascript:void(0)">+ 新标签</a>
+                                </li>
+                                <li ng-show="tagEditing" class="form-inline" ng-class="{'has-warning': !newTag}">
+                                        <input class="form-control input-sm" ng-model="newTag" type="text"/>
+                                        <button ng-click="saveTag()" type="button" class="btn btn-primary btn-sm">确定</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div ng-if="isMyProfile" ng-switch on="skill.editing" class="pull-right">
+                            <a ng-switch-when="false" ng-click="skill.editing=true" class="pull-right">
+                                <i class="icon icon-sm icon-txt-blue"></i>
+                            </a>
+                            <a ng-switch-when="true" ng-click="skill.save()">保存</a>
+                        </div>
+                        <h2 class="panel-title">技能认可</h2>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-unstyled list-skill">
+                            <li ng-repeat="item in listSkill" class="skill-item">
+                                <div class="clearfix">
+                                    <div class="pull-left skill-float">
+                                        <span class="span-addon-group">
+                                            <span class="span-primary">{{item.count}}</span>
+                                            <span>{{item.name}}</span>
+                                        </span>
+                                        <span ng-if="!isMyProfile" class="span-addon-group">
+                                            <span><a ng-click="approveSkill(item)" ng-class="{gray: item.approved}" class="icon icon-thumb-up-blue icon-sm"></a></span>
+                                        </span>
+                                    </div>
+                                    <div ng-if="item.listApprover.length" class="pull-right skill-float">
+                                        <ul class="list-approver list-inline">
+                                            <li ng-repeat="p in item.listApprover">
+                                                <a href="{{p.link}}" title="{{p.name}}">
+                                                    <img ng-src="{{p.faceUrl}}" alt="{{p.name}}" class="face30 img-circle">
+                                                </a>
+                                            </li>
+                                            <li class="more">
+                                                <a href="#" class="icon icon-sm icon-more-blue" ng-click="openAllApprover(item)"></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div id="modalAllApprover" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title">查看全部认可好友</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul class="media-list is-media-list">
+                                            <li ng-repeat="item in allApprover.list" class="media">
+                                                <a href="{{item.link}}" target="_blank" class="pull-left"><img ng-src="{{item.faceUrl}}" alt="" class="media-object face50 img-circle"></a>
+                                                <div class="media-body">
+                                                    <p>
+                                                        <a href="{{item.link}}" target="_blank" class="media-title"><strong>{{item.name}}</strong></a>{{item.org}} <br />
+                                                        ({{item.mail}})
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <my-pages pages="allApprover.pages" index="allApprover.index" nav="allApprover.getPage(index)"></my-pages>       
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div ng-if="isMyProfile" ng-switch on="basic.editing" class="pull-right">
+                            <a ng-switch-when="false" ng-click="basic.editing=true" class="pull-right">
+                                <i class="icon icon-sm icon-txt-blue"></i>
+                            </a>
+                            <a ng-switch-when="true" ng-click="basic.save()">保存</a>
+                        </div>
+                        <h2 class="panel-title">基本资料</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label">性 别：</label>
+                                <div ng-switch on="basic.editing" class="col-sm-10">
+                                    <div ng-switch-when="false" class="form-control-static">
+                                        {{basic.fields.gender}}
+                                    </div>
+                                    <div ng-switch-when="true">
+                                        <label class="radio-inline">
+                                          <input type="radio" ng-model="basic.fields.gender" value="男"> 男
+                                        </label>
+                                        <label class="radio-inline">
+                                          <input type="radio" ng-model="basic.fields.gender" value="女"> 女
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label">生 日：</label>
+                                <div ng-switch on="basic.editing" class="col-sm-10">
+                                    <div ng-switch-when="false" class="form-control-static">
+                                        {{basic.fields.birthDay.month + '月' + basic.fields.birthDay.date + '日'}}
+                                    </div>
+                                    <div ng-switch-when="true">
+                                        <select class="inp" ng-model="basic.fields.birthDay.year" ng-options="o for o in date.year">
+                                            <option value=""> ---- </option>
+                                        </select>
+                                        年
+                                        <select class="inp" ng-model="basic.fields.birthDay.month" ng-options="o for o in date.month">
+                                            <option value=""> -- </option>
+                                        </select>
+                                        月
+                                        <select class="inp" ng-model="basic.fields.birthDay.date" ng-options="o for o in date.date">
+                                            <option value=""> -- </option>
+                                        </select>
+                                        日
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label">星 座：</label>
+                                <div ng-switch on="basic.editing" class="col-sm-10">
+                                    <div ng-switch-when="false" class="form-control-static">
+                                        {{basic.fields.constellation}}
+                                    </div>
+                                    <div ng-switch-when="true">
+                                        <select class="inp" ng-model="basic.fields.constellation" ng-options="o for o in arrayConstellation">
+                                            <option value=""> ------ </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label">籍 贯：</label>
+                                <div ng-switch on="basic.editing" class="col-sm-10">
+                                    <div ng-switch-when="false" class="form-control-static">
+                                        {{basic.fields.nativeplace.province}}省 {{basic.fields.nativeplace.city}}市
+                                    </div>
+                                    <div ng-switch-when="true">
+                                        <select class="inp" ng-change="changeSubCities()" ng-model="basic.fields.nativeplace.province" ng-options="o.name as o.name for o in cities">
+                                            <option value=""> ---- </option>
+                                        </select>
+                                        省
+                                        <select class="inp" ng-model="basic.fields.nativeplace.city" ng-options="o for o in subCities">
+                                            <option value=""> ---- </option>
+                                        </select>
+                                        市
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label">学 历：</label>
+                                <div ng-switch on="basic.editing" class="col-sm-10">
+                                    <div ng-switch-when="false" class="form-control-static">
+                                        {{basic.fields.education}}
+                                    </div>
+                                    <div ng-switch-when="true">
+                                        <select class="inp" ng-model="basic.fields.education" ng-options="o for o in arrayEducation">
+                                            <option value=""> ---- </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div ng-if="isMyProfile" ng-switch on="contact.editing" class="pull-right">
+                            <a ng-switch-when="false" ng-click="contact.editing=true" class="pull-right">
+                                <i class="icon icon-sm icon-txt-blue"></i>
+                            </a>
+                            <a ng-switch-when="true" ng-click="contact.save()">保存</a>
+                        </div>
+                        <h2 class="panel-title">联系方式</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label">电 话：</label>
+                                <div ng-switch on="contact.editing" class="col-sm-10">
+                                    <div ng-switch-when="false" class="form-control-static">
+                                        {{contact.fields.tel}}
+                                    </div>
+                                    <div ng-switch-when="true">
+                                        <input type="text" class="inp" ng-model="contact.fields.tel" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label">手 机：</label>
+                                <div ng-switch on="contact.editing" class="col-sm-10">
+                                    <div ng-switch-when="false" class="form-control-static">
+                                        {{contact.fields.phone}}
+                                    </div>
+                                    <div ng-switch-when="true">
+                                        <input type="text" class="inp" ng-model="contact.fields.phone" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label">邮 箱：</label>
+                                <div ng-switch on="contact.editing" class="col-sm-10">
+                                    <div ng-switch-when="false" class="form-control-static">
+                                        {{contact.fields.mail}}
+                                    </div>
+                                    <div ng-switch-when="true">
+                                        <input type="mail" class="inp" ng-model="contact.fields.mail" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label">微 信：</label>
+                                <div ng-switch on="contact.editing" class="col-sm-10">
+                                    <div ng-switch-when="false" class="form-control-static">
+                                        {{contact.fields.weixin}}
+                                    </div>
+                                    <div ng-switch-when="true">
+                                        <input type="text" class="inp" ng-model="contact.fields.weixin" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label">Q  Q：</label>
+                                <div ng-switch on="contact.editing" class="col-sm-10">
+                                    <div ng-switch-when="false" class="form-control-static">
+                                        {{contact.fields.qq}}
+                                    </div>
+                                    <div ng-switch-when="true">
+                                        <input type="text" class="inp" ng-model="contact.fields.qq" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div ng-if="isMyProfile" ng-switch on="experience.editing" class="pull-right">
+                            <a ng-switch-when="false" ng-click="experience.editing=true" class="pull-right">
+                                <i class="icon icon-sm icon-txt-blue"></i>
+                            </a>
+                            <a ng-switch-when="true" ng-click="experience.save()">保存</a>
+                        </div>
+                        <h2 class="panel-title">工作经历</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            <fieldset ng-repeat="item in experience.fields.list" >
+                                <div ng-init="item.editing=false" ng-switch on="item.editing">
+                                    <div ng-switch-when="false" class="item-view">
+                                        <h3>
+                                            {{item.jobTitle}}
+                                            <span ng-show="experience.editing" class='btn-group'>
+                                                <a ng-click="item.editing=true" class="btn btn-link">编辑</a>
+                                                <a ng-click="experience.delItem(item)" class="btn btn-link">删除</a>
+                                            </span>
+                                        </h3>
+                                        <p>{{item.company}}</p>
+                                        <p>{{item.date.start.year}}年{{item.date.start.month}}月
+                                            ——
+                                            {{item.date.end.year}}年{{item.date.end.month}}月
+                                        </p>
+                                    </div>
+                                    <div ng-switch-when="true">
+                                        <div class="form-group">
+                                            <label  class="col-sm-2 control-label">职位名称：</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="inp" ng-model="item.jobTitle" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label  class="col-sm-2 control-label">就职单位：</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="inp" ng-model="item.company" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">就职时间：</label>
+                                            <div class="col-sm-10">
+                                                <select class="inp" ng-model="item.date.start.year" ng-options="o for o in date.year">
+                                                    <option value=""> ---- </option>
+                                                </select>
+                                                年
+                                                <select class="inp" ng-model="item.date.start.month" ng-options="o for o in date.month">
+                                                    <option value=""> -- </option>
+                                                </select>
+                                                月
+                                                &nbsp;&nbsp;----&nbsp;&nbsp;
+                                                <select class="inp" ng-model="item.date.end.year" ng-options="o for o in date.year">
+                                                    <option value=""> ---- </option>
+                                                </select>
+                                                年
+                                                <select class="inp" ng-model="item.date.end.month" ng-options="o for o in date.month">
+                                                    <option value=""> -- </option>
+                                                </select>
+                                                月
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-10 col-sm-offset-2">
+                                                <button type="button" ng-click="item.editing=false" class="btn btn-sm btn-primary">确 定</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </fieldset>
+
+                            <fieldset ng-form name="addExpForm"  class="addItem" ng-show="experience.editing">
+                                <p>
+                                    <a ng-click="experience.addItem()" class="btn-addExp">+添加新经历</a>
+                                </p>
+                                <div class="form-group">
+                                    <label  class="col-sm-2 control-label">职位名称：</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="inp" name="jobTitle" required ng-model="experience.newItem.jobTitle" />
+                                        <span ng-show="addExpForm.jobTitle.$error.required" class="text-danger">* 必填</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label  class="col-sm-2 control-label">就职单位：</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="inp" name="company" required ng-model="experience.newItem.company" />
+                                        <span ng-show="addExpForm.company.$error.required" class="text-danger">* 必填</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">就职时间：</label>
+                                    <div class="col-sm-10">
+                                        <select class="inp" ng-model="experience.newItem.date.start.year" ng-options="o for o in date.year">
+                                            <option value=""> ---- </option>
+                                        </select>
+                                        年
+                                        <select class="inp" ng-model="experience.newItem.date.start.month" ng-options="o for o in date.month">
+                                            <option value=""> -- </option>
+                                        </select>
+                                        月
+                                        &nbsp;&nbsp;----&nbsp;&nbsp;
+                                        <select class="inp" ng-model="experience.newItem.date.end.year" ng-options="o for o in date.year">
+                                            <option value=""> ---- </option>
+                                        </select>
+                                        年
+                                        <select class="inp" ng-model="experience.newItem.date.end.month" ng-options="o for o in date.month">
+                                            <option value=""> -- </option>
+                                        </select>
+                                        月
+                                    </div>
+                                </div>
+                            </fieldset>
+                            
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="col-aside">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="pull-right"></div>
+                        <div class="nav tabs">
+                            <h2 ng-click="modTab.getTeam()" ng-class="{active: modTab.current=='teamMembers'}" class="panel-title">我的团队</h2>
+                            <h2 ng-click="modTab.getOrg()" ng-class="{active: modTab.current=='orgRelation'}" class="panel-title">汇报关系</h2>
+                        </div>
+                    </div>
+                    <div  ng-switch on="modTab.current" class="panel-body panel-org-relation">
+                        <ul ng-switch-when="teamMembers" class="list-inline list-thumbs list-face">
+                            <li ng-repeat="member in teamMembers" class="ng-scope"><a href="{{member.link}}">
+                                <img class="face50 img-circle" ng-src="{{member.faceUrl}}" alt="" >
+                                <h5>{{member.name}}</h5>
+                            </a></li>
+                        </ul>
+                        <ul ng-switch-when="orgRelation" class="media-list is-media-list org-relation-list">
+                            <li ng-repeat="item in orgRelationList" class="media">
+                                <div class="vline"></div>
+                                <i class="icon icon-arrow-up-gray icon-sm"></i>
+                                <i ng-class="{'icon-white': item.id == profileInfo.id}" class="icon icon-sm icon-dot-gray"></i>
+                                <a href="{{item.link}}" target="_blank" class="pull-left"><img ng-src="{{item.faceUrl}}" alt="" class="media-object face50 img-circle"></a>
+                                <div class="media-body">
+                                    <div class="media-heading">
+                                        <a href="{{item.link}}" target="_blank" class="media-title"><strong>{{item.name}}</strong></a>
+                                    </div>
+                                    <p>{{item.org}}</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

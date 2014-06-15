@@ -2,22 +2,14 @@
 
 // Declare app level module which depends on filters, and services
 var  App = angular.module('ispaceApp', [
-  'ngRoute',
+  'ngResource',
   'ispace.filters',
   'ispace.services',
   'ispace.directives',
   'ispace.controllers'
 ]);
 
-App.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
-    $routeProvider.
-        when('/', {
-            templateUrl: 'partials/home.html',
-            controller: 'homeCtrl'
-        }).
-        otherwise({
-            redirectTo: '/'
-        });
-
-    $locationProvider.html5Mode(true);
-}])
+var ispaceDirectives = angular.module('ispace.directives', []);
+var ispaceControllers = angular.module('ispace.controllers', []);
+var ispaceFilters = angular.module('ispace.filters', []);
+var ispaceServices = angular.module('ispace.services', ['ngResource']);

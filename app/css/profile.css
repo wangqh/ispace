@@ -1,0 +1,117 @@
+@import "global.css";
+@charset "UTF-8";
+.list-circle-lg li{
+    vertical-align: middle;
+}
+.list-circle-lg li h4{
+    margin: 9px 0;
+    font-family: arial, sans-serif;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: bold;
+}
+.list-icons{
+    font-size: 0;
+}
+.list-icons li{
+    padding: 0 3px;
+}
+.panel-user .list-circle-lg{
+    margin: 80px 0 20px;
+}
+.mod-intro{
+    font-size: 16px;
+    line-height: 23px;
+    margin-top: 30px;
+}
+.tagBox .list-tags{
+    margin-bottom: -10px;
+}
+.tagBox .form-inline{
+    white-space: nowrap;
+    vertical-align: top;
+}
+.tagBox .form-inline .input-sm,.tagBox .form-inline .btn-sm{
+    padding: 3px 10px;
+}
+.tagBox .form-inline .input-sm{
+    height: 26px;
+}
+
+.span-addon-group{
+    display: inline-block;
+    margin-right: 2px;
+    background-color: #eff0ed;
+    border-radius: 4px;
+    height: 34px;
+}
+.span-addon-group > span{
+    display: inline-block;
+    color: #9c9c9c;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 7px 10px;
+}
+.span-addon-group > .span-primary{
+    background-color: #2777b6;
+    border-radius: 4px 0 0 4px;
+    color: #ffffff;
+}
+.span-addon-group > .span-primary:last-child{
+    border-radius: 0 4px 4px 0;
+}
+
+.list-skill .skill-float{
+    background-color: #ffffff;
+}
+.list-skill .skill-item{
+    border-top: dotted #9a9a9a 1px;
+    margin-top: 42px;
+}
+.list-skill .skill-item:first-child{
+    margin-top: 35px;
+}
+.list-skill .skill-item > .clearfix{
+    margin-top: -17px;
+}
+.list-approver li{
+    padding: 0 4px;
+}
+.list-approver li.more{
+    padding: 0;
+}
+.panel-title{
+    font-size: 18px;
+}
+.form-horizontal,.form-horizontal .btn-link{
+    font-size: 16px;
+}
+.form-horizontal .form-group {
+    margin-bottom:3px;
+}
+.form-horizontal .form-group > .control-label{
+    text-align: left;
+    font-weight: normal;
+    color: #9c9c9c;
+}
+.form-horizontal .form-group input.inp{
+    margin-top: 1px;
+}
+.form-horizontal .form-group select.inp{
+    margin-top: 4px;   
+}
+.form-horizontal .form-group .col-sm-10 > div{
+    margin-left: -30px;
+}
+.form-horizontal fieldset{
+    margin-bottom: 20px;
+}
+.item-view h3{
+    margin-top: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+.item-view p{
+    color: #9c9c9c;
+    margin-bottom: 0;
+}

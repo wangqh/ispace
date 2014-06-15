@@ -1,15 +1,7 @@
+/**
+ * Created by wqh on 2014-06-09.
+ */
 'use strict';
-
-/* Directives */
-
-
-var ispaceDirectives = angular.module('ispace.directives', []);
-
-ispaceDirectives.directive('appVersion', ['version', function(version) {
-    return function(scope, elm, attrs) {
-        elm.text(version);
-    };
-}]);
 
 ispaceDirectives.directive('myArticles',  function() {
     return {
@@ -336,81 +328,5 @@ ispaceDirectives.directive('myCommenting',  function() {
         },
         link: function(scope, element, attrs, ctrl){
         }
-    };
-});
-
-ispaceDirectives.directive('myVideo',  function($sce) {
-    return {
-        restrict: 'EA',
-        scope:{
-            vid: '@'
-        },
-        replace: true,
-        templateUrl: 'partials/video-directive.html',
-        controller: function ($scope) {
-            $scope.videoUrl = $sce.trustAsResourceUrl('http://union.bokecc.com/player?vid='+ $scope.vid +'&siteid=B47D5D75B8086E19&autoStart=false&width=100%&height=400&playerid=6804363A07E3D55F&playertype=1');
-        }
-    };
-});
-
-ispaceDirectives.directive('myHeader',  function() {
-    return {
-        restrict: 'EA',
-        replace: true,
-        templateUrl: 'partials/header-directive.html',
-        controller: ['$rootScope', 'NotifyInterval', function($rootScope, NotifyInterval){
-            /* 消息对象 */
-            $rootScope.notify = {
-                count: 0
-            };
-            NotifyInterval.apply('notify', function(count){
-                $rootScope.notify.count = count; //消息数
-            });
-        }]
-    };
-});
-
-ispaceDirectives.directive('myFooter',  function() {
-    return {
-        restrict: 'EA',
-        replace: true,
-        templateUrl: 'partials/footer-directive.html',
-        controller: [ function(){ }]
-    };
-});
-
-ispaceDirectives.directive('myCurrentTime', function($timeout, dateFilter) {
-    // return the directive link function. (compile function not needed)
-    return function(scope, element, attrs) {
-        var format,  // date format
-            timeoutId; // timeoutId, so that we can cancel the time updates
-
-        // used to update the UI
-        function updateTime() {
-            element.text(dateFilter(new Date(), format));
-        }
-
-        // watch the expression, and update the UI on change.
-        scope.$watch(attrs.myCurrentTime, function(value) {
-            format = value;
-            updateTime();
-        });
-
-        // schedule update in one second
-        function updateLater() {
-            // save the timeoutId for canceling
-            timeoutId = $timeout(function() {
-                updateTime(); // update DOM
-                updateLater(); // schedule another update
-            }, 1000);
-        }
-
-        // listen on DOM destroy (removal) event, and cancel the next UI update
-        // to prevent updating time ofter the DOM element was removed.
-        element.bind('$destroy', function() {
-            $timeout.cancel(timeoutId);
-        });
-
-        updateLater(); // kick off the UI update process.
     };
 });

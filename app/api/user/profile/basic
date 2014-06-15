@@ -1,0 +1,14 @@
+{
+	"gender": "女",
+	"birthDay": {
+		"year": 1988,
+		"month": 3,
+		"date": 28
+	},
+	"constellation": "白羊座",
+	"nativeplace": {
+		"province": "山东",
+		"city": "东营"
+	},
+	"education": "硕士"
+}

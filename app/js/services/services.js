@@ -3,12 +3,7 @@
 /* Services */
 
 
-// Demonstrate how to register services
 
-var ispaceServices = angular.module('ispace.services', ['ngResource']);
-
-// In this case it is a simple value service.
-ispaceServices.value('version', '0.1');
 
 //创建我的圈子REST服务
 ispaceServices.factory('Group', ['$resource',
@@ -112,9 +107,20 @@ ispaceServices.factory('Article', ['$resource', function($resource){
 
 //创建用户REST服务
 ispaceServices.factory('User', ['$resource', function($resource){
-    return $resource('api/:u/:op', {u: 'user'}, {
-        myInfo: {method: 'GET', params: {op:'index'}},//我的个人信息
-        oneInfo: {method: 'GET', params: {u:'uid', op:'index'}}//某个人的信息
+    return $resource('api/user/:uid/:opp/:op/:id', {uid: null}, {// 若其它人的信息给uid赋值(用户id)
+        visitor: {method: 'GET', params: {op:'visitor'}},//获取当前登录的用户
+        info: {method: 'GET', params: {op:'info'}},//基本信息,:uid有值时取他人信息
+        getTags: {method: 'GET', params: {opp:'profile', op:'tag'}, isArray: true},//获取所有标签
+        addTag: {method: 'POST', params: {opp:'profile', op:'tag'}},//增加标签
+        removeTag: {method: 'DELETE', params: {opp:'profile', op:'tag'}},//删除标签
+        getTeamMembers: {method: 'GET', params: {opp:'profile', op:'teamMembers'}, isArray: true},//获取用户的团队成员
+        getOrgRelation: {method: 'GET', params: {opp:'profile', op:'orgRelation'}, isArray: true},//获取用户的汇报关系
+        getListSkill: {method: 'GET', params: {opp:'profile', op:'skill'}, isArray: true},//获取用户的技能认可列表
+        getApprovers: {method: 'GET', params: {opp:'profile', op:'approvers'}, isArray: true},//获取某项技能的认可者，按页码获取
+        approveSkill: {method: 'PUT', params: {opp:'profile', op:'skill'}},//认可用户的技能
+        getBasic: {method: 'GET', params: {opp:'profile', op:'basic'}},//获取用户档案的基本资料
+        getContact: {method: 'GET', params: {opp:'profile', op:'contact'}},//获取用户档案的联系方式
+        getExperience: {method: 'GET', params: {opp:'profile', op:'experience'}}//获取用户档案的联系方式
     });
 }]);
 

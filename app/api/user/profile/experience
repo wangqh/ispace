@@ -1,0 +1,34 @@
+{
+	"list": [
+		{
+			"id": "few3202048",
+			"jobTitle": "知识管理经理",
+			"company": "新东方教育科技集团 集团知识管理中心",
+			"date": {
+				"start": {
+					"year": 2012,
+					"month": 1
+				},
+				"end": {
+					"year": 2014,
+					"month": 6
+				}
+			}
+		},
+		{
+			"id": "ve432345",
+			"jobTitle": "软件工程师",
+			"company": "IBM中国开发中心",
+			"date": {
+				"start": {
+					"year": 2010,
+					"month": 7
+				},
+				"end": {
+					"year": 2012,
+					"month": 1
+				}
+			}
+		}
+	]
+}

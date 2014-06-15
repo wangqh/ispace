@@ -11,7 +11,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css({.tmp,app}) css/index.css -->
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/profile.css">
     <!-- endbuild -->
     <script src="bower_components/modernizr/modernizr.js"></script>
     <!--[if lt IE 9]>
@@ -28,7 +28,7 @@
     <my-header></my-header>
     <!-- header end -->
 
-    <my-home></my-home>
+    <my-profile visitorid="{{visitor.id}}"></my-profile>
     
     <!-- footer start -->
         <my-footer></my-footer>
@@ -52,10 +52,12 @@
     <script src="js/components/tooltip.js"></script>
     <script src="js/components/popover.js"></script>
     <script src="js/components/dropdown.js"></script>
+    <script src="js/components/modal.js"></script>
     <script src="js/i18n/angular-locale_zh-cn.js"></script>
     <script src="js/app/app.home.js"></script>
-    <script src="js/controllers/controller.home.js"></script>
-    <script src="js/directives/directive.home.merge.js"></script>
+    <script src="js/controllers/controller.profile.js"></script>
+    <script src="js/directives/directive.profile.merge.js"></script>
+    <script src="js/filters/filters.js"></script>
     <script src="js/services/services.js"></script>
     <!-- endbuild -->
 </body>

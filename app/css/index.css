@@ -50,20 +50,7 @@
   border-top: dashed #979797 1px;
 }
 
-/* 各尺寸头像 */
-.face30{
-  width: 30px;
-  height: 30px;
-}
-.face50{
-  width: 50px;
-  height: 50px;
-}
-.face160{
-  width: 174px;
-  height: 174px;
-  border: solid #37b0e9 7px;
-}
+
 
 /* homepage side right */
 .is-sidebar-right{
@@ -72,48 +59,12 @@
 .is-sidebar-right .panel{
   margin-bottom: 0;
 }
-.panel-user .panel-body{
-  padding: 13px 16px;
-}
-.panel-user .panel-body .page-header{
-  margin: 0;
-}
-.panel-user .panel-body .page-header h1{
-  font-size: 22px;
-  margin-top: 10px;
-}
-.panel-user .panel-body .list-counts li{
-  width: 72px;
-  color: #4e4e4e;
-  font-size: 18px;
-}
-.panel-user .panel-body .list-counts li h4{
-  font-size: 24px;
-  font-family: arial;
-  font-weight: bold;
-  margin: 20px 0 0px;
-}
 .panel-user .panel-body .list-app .circle-blue-bg {
   width: 60px;
   height: 60px;
   padding: 15px;
 }
-.is-sidebar-right .list-thumbs{
-  font-size: 0;
-  margin-right: -16px;
-  margin-left: -7px;
-}
-.is-sidebar-right .list-thumbs li{
-  text-align: center;
-}
-.is-sidebar-right .list-thumbs li:first-child{
-  padding-left: 5px;
-}
-.is-sidebar-right .list-thumbs li h5{
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
+
 .panel-user .panel-body .list-app li h5{
   color: #4e4e4e;
   font-size: 16px;
@@ -160,47 +111,12 @@
   opacity: .4;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
 }
-.is-sidebar-right .list-face li{
-  padding: 0 3px;
-}
-.is-sidebar-right .list-face li a h5{
-  color: #4c4c4c;
-  font-size: 12px;
-  width: 50px;
-  margin: 5px 0 10px;
-}
-.is-media-list .media{
-  margin-top: 5px;
-}
-.is-media-list .media:first-child{
-  margin-top: 0;
-}
-.is-media-list .media-body{
-  color: #9c9c9c;
-  min-height: 50px;
-}
-.is-media-list .media-body p{
-  font-size: 12px;
-}
-.is-media-list .media-body p.mr60{
-  margin:0 60px 0 0;
-}
-.is-media-list .media-body p.mt6{
-  margin:6px 0 0;
-}
-.is-media-list .media-heading{
-  margin-bottom: 0;
-}
-.is-media-list .media-title{
-  font-size: 14px;
-  color: #4e4e4e;
-  line-height: 20px;
-  margin: 0;
-}
-.is-media-list .media-body p .media-title{
-  margin-right: 10px;
-}
 
+
+
+.icon-loading-blue{
+    cursor: pointer;
+}
 /* homepage content */
 .is-home-content{
   margin-left: 30px;
